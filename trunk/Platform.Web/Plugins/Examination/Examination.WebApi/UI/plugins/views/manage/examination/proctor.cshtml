@@ -1,0 +1,50 @@
+﻿<div class="row" ng-controller="app.views.manage.watchteacher.teacherlist as vm">
+    <div class="col-sm-12">
+        <div class="wiget" id="teacherlist">
+            <div class="widget-header text-align-left teacher-info">
+                监考老师信息
+            </div>
+            <div class="widget-body">
+                <a class="btn btn-default" ng-click="addteacher()"><i class="fa fa-user-plus"></i> 添加老师</a>
+                <table class="table table-striped table-bordered table-hover margin-top-10">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i class="fa fa-street-view"></i> 老师姓名
+                            </th>
+                            <th class="hidden-xs">
+                                <i class="fa fa-user"></i> 账号
+                            </th>
+                            <th>
+                                <i class="fa fa-lock"></i> 密码
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="option in teacherInformation">
+                            <td>
+                                <a href="#">{{option.name}}</a>
+                            </td>
+                            <td class="hidden-xs">
+                                {{option.user}}
+                            </td>
+                            <td>
+                                {{option.password}}
+                            </td>
+                            <td>
+
+                                <a class="btn btn-default btn-xs purple" ng-click="editteacher(option)"><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-default btn-xs purple" ng-click="delectteacher(option)"><i class="fa fa-edit"></i> Delect</a>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

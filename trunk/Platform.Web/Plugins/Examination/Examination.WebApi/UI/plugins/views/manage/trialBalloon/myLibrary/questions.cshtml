@@ -1,0 +1,185 @@
+﻿<div class="row" ng-controller="app.views.manage.trialBalloon.myLibrary.questions as vm">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <span class="widget-caption">我的题库</span>
+
+                <div class="widget-buttons">
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <h4 class="block">{{library.name}}</h4>
+                            <p>{{library.points}}</p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <h4 class="pull-left" style="margin: 15px;">共{{pagination.totalCount}}道题</h4>
+                                <div class="input-group input-group-sm pull-left margin-10" style="width: 80px;">
+                                    <div hello></div>
+                                    <input number-mask type="text" class="form-control" enter-key="setPage(txtPage)" ng-model="txtPage">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="setPage(txtPage)">Go</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <uib-pagination class="pagination-sm margin-10 pull-left"
+                                                total-items="pagination.totalCount" items_per_page="pagination.pageSize"
+                                                ng-model="pagination.pageIndex" max-size="pagination.pageNumberCount"
+                                                rotate="false" num-pages="pagination.numPages"
+                                                previous-text="上一题" next-text="下一题">
+                                </uib-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-5" id="kongjian">
+                    <a class="btn btn-default pull-left radius-bordered btn-lg" style="border-radius:5px" ng-click="addQuestion()"><i class="glyphicon glyphicon-plus"></i> 添加试题</a>
+                </div>
+                <div class="well invoice-container" ng-repeat="question in library.questions.items">
+                    <ng-include src="question.questionType + 'Show'"></ng-include>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="SingleSelectionShow" type="text/ng-template">
+    <ul class="dst2 margin-top-10">
+        <li class="col-sm-2" style="white-space:nowrap; overflow:auto">编号：{{question.numberCode}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">科目：{{question.subjectUnit.displayName}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">考点：{{question.points}}</li>
+        <li class="col-sm-4" style="white-space:nowrap; overflow:auto">
+            <a class="btn btn-default pull-left margin-left-5" ng-click="editQuestion(question)"><i class="fa fa-edit"></i> 编辑</a>
+            <a class="btn btn-default pull-left margin-left-5" ng-click="deleteQuestion(question)"><i class="fa fa-trash-o"></i>删除</a>
+        </li>
+    </ul>
+
+    <div class="tickets-container">
+        <p ng-bind-html="question.stem"></p>
+        <ul class="tickets-list" id="tickets-list">
+            <li class="ticket-item txt1" ng-repeat="option in question.options">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <span class="text-danger">{{option.content}}</span>
+                    </div>
+                    <div ng-if="option.isRightKey" class="ticket-state bg-palegreen">
+                        <i class="fa fa-check"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="dst2 margin-top-10">
+        <li class="col-sm-12">试题分析：{{question.analysis}}</li>
+    </ul>
+
+
+</script>
+
+<script id="MultipleChoiceShow" type="text/ng-template">
+
+    <ul class="dst2 margin-top-10">
+        <li class="col-sm-2" style="white-space:nowrap; overflow:auto">编号：{{question.numberCode}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">科目：{{question.subjectUnit.displayName}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">考点：{{question.points}}</li>
+        <li class="col-sm-4" style="white-space:nowrap; overflow:auto">
+            <a class="btn btn-default pull-left margin-left-5" ng-click="editQuestion(question)"><i class="fa fa-edit"></i> 编辑</a>
+            <a class="btn btn-default pull-left margin-left-5" ng-click="deleteQuestion(question)"><i class="fa fa-trash-o"></i> 删除</a>
+        </li>
+    </ul>
+
+    <div class="tickets-container">
+        <p ng-bind-html="question.stem"></p>
+        <ul class="tickets-list" id="tickets-list">
+            <li class="ticket-item txt1" ng-repeat="option in question.options">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <span>{{option.content}}</span>
+                    </div>
+                    <div ng-if="option.isRight" class="ticket-state bg-palegreen">
+                        <i class="fa fa-check"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="dst2">
+        <li class="col-sm-12">试题分析：{{question.analysis}}</li>
+    </ul>
+
+
+</script>
+
+<script id="PracticalShow" type="text/ng-template">
+
+    <ul class="dst2 margin-top-10">
+        <li class="col-sm-2" style="white-space:nowrap; overflow:auto">编号：{{question.numberCode}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">科目：{{question.subjectUnit.displayName}}</li>
+        <li class="col-sm-3" style="white-space:nowrap; overflow:auto">考点：{{question.points}}</li>
+        <li class="col-sm-4" style="white-space:nowrap; overflow:auto">
+            <a class="btn btn-default pull-left margin-left-5" ng-click="editQuestion(question)"><i class="fa fa-edit"></i> 编辑</a>
+            <a class="btn btn-default pull-left margin-left-5" ng-click="deleteQuestion(question)"><i class="fa fa-trash-o"></i> 删除</a>
+        </li>
+    </ul>
+
+    <div class="tickets-container">
+        <p ng-bind-html="question.stem"></p>
+        <ul class="tickets-list" id="tickets-list">
+            <li class="ticket-item txt1" ng-repeat="option in question.options">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <span>{{option.content}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="dst2">
+        <li class="col-sm-12">试题分析：{{question.analysis}}</li>
+    </ul>
+
+
+</script>
+
+<script id="ComprehensiveShow" type="text/ng-template">
+    <div class="ulp">
+        <ul class="dst2 margin-top-10">
+            <li class="col-sm-2" style="white-space:nowrap; overflow:auto">编号：{{question.numberCode}}</li>
+            <li class="col-sm-3" style="white-space:nowrap; overflow:auto">科目：{{question.subjectUnit.displayName}}</li>
+            <li class="col-sm-3" style="white-space:nowrap; overflow:auto">考点：{{question.points}}</li>
+            <li class="col-sm-4" style="white-space:nowrap; overflow:auto">
+                <a class="btn btn-default pull-left margin-left-5" ng-click="editQuestion(question)"><i class="fa fa-edit"></i> 编辑</a>
+                <a class="btn btn-default pull-left margin-left-5" ng-click="deleteQuestion(question)"><i class="fa fa-trash-o"></i> 删除</a>
+            </li>
+        </ul>
+        <p ng-bind-html="question.stem" style="text-indent:31px;font-size:16px;margin:0 0 12px"></p>
+    </div>
+
+
+
+    <div class="tickets-container" id="zongheti">
+        <div class="" ng-repeat="child in question.children">
+            <div class="ulp margin-top-10">
+                <ng-include src="child.questionType + 'Show'" ng-init="question=child"></ng-include>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="btn btn-group-justified btn-default margin-top-10" ng-click="addQuestionForChildren()">添加子题</button>
+    <p class="panel-body">
+        <ul class="dst2">
+            <li class="col-sm-12">试题分析：{{question.analysis}}</li>
+        </ul>
+    </p>
+
+</script>

@@ -1,0 +1,135 @@
+.logo{
+	height: 60px;
+	line-height: 60px;
+	font-size: 25px;
+	text-align: center;
+    border-bottom:1px solid #dbdbdb;
+}
+
+.paper-left h3{
+	font-size: 1rem;
+	height: 55px;
+	line-height: 60px;
+}
+.paper-left .select-d h1{
+	line-height: 50px;
+	font-size: 16px;
+    position:relative;
+}
+
+    .paper-left .select-d h1 a i.firstt{
+    position:absolute;
+    top:6px;
+    right:30px;
+    display:none;
+    }
+    .paper-left .select-d h1 a i.secondd{
+    position:absolute;
+    top:6px;
+    right:4px;
+    display:none;
+    }
+    .paper-left .select-d h1:hover {
+    background-color:#eee;
+    cursor:pointer;
+}
+        .paper-left .select-d h1:hover .firstt {
+            display:block;
+        }
+        .paper-left .select-d h1:hover .secondd {
+            display:block;
+        }
+        .paper-left .select-d h1:hover input {
+            background-color:#eee;
+        }
+    .paper-left .select-d h1 input {
+        line-height:20px;
+        border-radius:5px;
+      
+        border:none;
+    }
+.paper-left .select-d h1 button{
+	margin-top: 14px;
+}
+.paper-left .select-d .select-dc ul{
+	overflow: hidden;
+}
+.paper-left .select-d .select-dc ul li{
+	
+	width: 20%;
+	float: left;
+	border:1px solid #dbdbdb;
+
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+
+	cursor: pointer;
+}
+    .paper-left .select-d .select-dc ul li:hover {
+       background-color: #eee;
+        color:#000000;
+        border:1px solid #000;
+    }
+.paper-right {
+     border-left:2px solid #dbdbdb;
+     
+}
+.paper-right .theme-head{
+	overflow: hidden;
+   position:relative;
+   padding-right:28px;
+}
+.paper-right  p{
+	
+	line-height: 40px;
+	font-size: 15px;
+
+}
+    .paper-right .theme-head > span {
+        position:absolute;
+       top:10px;
+        right:0px;
+    }
+        .paper-right span list-unstyled  li {
+            position:relative
+        }
+.theme-head strong {
+      height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+    }
+.paper-right ul li{
+	text-indent: 0px;
+	
+	line-height: 40px;
+	font-size: 16px;
+    margin:0 20px;
+}
+    .paper-right ul li:hover {
+        background-color:#dbdbdb;
+        cursor:pointer;
+        border:1px solid #000;
+    }
+
+.select-dc .selected{
+    background-color:#0094ff;
+    color:white;
+   
+}
+
+.zongheti-hover:hover {
+    background-color:#eee;
+    cursor:pointer;
+    
+
+}
+.zongheti-hover a {
+    display:none;
+}
+.zongheti-hover:hover a{
+        display:block;
+ }
+.addziti {
+    padding:0 25px;
+}

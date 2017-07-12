@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="TrialBalloon" value="题库管理" />
+    <text name="TrialBalloon_SubjectUnit" value="科目管理" />
+    <text name="TrialBalloon_SubjectUnitDescription" value="管理科目及其子项" />
+    <text name="TrialBalloon_Points" value="知识点管理" />
+    <text name="TrialBalloon_PointsDescription" value="管理知识点及其子项" />
+    <text name="TrialBalloon_MyLibrary" value="我的题库" />
+    <text name="TrialBalloon_MyLibraryDescription" value="我的题库" />
+    <text name="TrialBalloon_Question" value="试题管理" />
+    <text name="TrialBalloon_QuestionDescription" value="试题管理" />
+    <text name="Examination" value="考试管理" />
+    <text name="Examination_Exam" value="我的考试" />
+    <text name="Examination_ExamDescription" value="我的考试" />
+    <text name="Examination_Paper" value="试卷管理" />
+    <text name="Examination_PaperDescription" value="试卷管理" />
+    
+  </texts>
+</localizationDictionary>

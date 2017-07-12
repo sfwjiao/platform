@@ -1,0 +1,147 @@
+﻿<style>
+    .editor-text {
+        border: 1px solid #cecece;
+        margin-top: 10px;
+        background-color: #fff;
+        padding: 10px;
+        min-height: 500px;
+    }
+</style>
+
+<div class="mail-container" style="margin:-17px;">
+    <div class="mail-header">
+        <ul class="header-buttons">
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Send"><i class="fa fa-external-link"></i> </a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Attach"><i class="glyphicon glyphicon-paperclip"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Cancel"><i class="glyphicon glyphicon-remove"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Draft"><i class="glyphicon glyphicon-save"></i></a>
+            </li>
+        </ul>
+
+        <div class="draft">
+            Last Draft Saved 1 minutes ago
+        </div>
+    </div>
+    <div class="mail-body">
+        <div class="mail-compose">
+            <form method="post" role="form">
+                <div class="form-group bordered-left-4 bordered-themeprimary">
+                    <label for="to">To:</label>
+                    <input type="text" class="form-control" id="to" tabindex="1" />
+                    <div class="field-options">
+                        <a href="javascript:;" onclick="$(this).hide(); $('#cc').parent().removeClass('hidden'); $('#cc').focus();">CC</a>
+                        <a href="javascript:;" onclick="$(this).hide(); $('#bcc').parent().removeClass('hidden'); $('#bcc').focus();">BCC</a>
+                    </div>
+                </div>
+                <div class="form-group hidden bordered-left-4 bordered-themethirdcolor">
+                    <label for="cc">CC:</label>
+                    <input type="text" class="form-control" id="cc" tabindex="2" />
+                </div>
+                <div class="form-group hidden bordered-left-4 bordered-themefourthcolor">
+                    <label for="bcc">BCC:</label>
+                    <input type="text" class="form-control" id="bcc" tabindex="2" />
+                </div>
+                <div class="form-group bordered-left-4 bordered-themesecondary">
+                    <label for="subject">Subject:</label>
+                    <input type="text" class="form-control" id="subject" tabindex="1" />
+                </div>
+                <div ng-controller="TextAngularCtrl" class="padding-30">
+                    <div text-angular ng-model="emailContent" name="demo-editor" ta-text-editor-class="editor-text" ta-html-editor-class="editor-text"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mail-sidebar">
+        <ul class="mail-menu">
+            <li>
+                <a ui-sref="app.inbox">
+                    <i class="fa fa-inbox"></i>
+                    <span class="badge badge-default badge-square pull-right">6</span>
+                    Inbox
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-star"></i>
+                    <span class="badge badge-default badge-square pull-right">1</span>
+                    Important
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="glyphicon glyphicon-share"></i>
+                    <span class="badge badge-default badge-square pull-right">1</span>
+                    Sent
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    Drafts
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-ban"></i>
+                    <span class="badge badge-default badge-square pull-right">1</span>
+                    Spam
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-trash-o"></i>
+                    Trash
+                </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+                <a href="#">
+                    + Add Folder
+                </a>
+            </li>
+        </ul>
+        <ul class="mail-menu">
+            <li class="menu-title">
+                <h6>Tags</h6>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="badge badge-palegreen badge-tag badge-square"></span>
+                    Business
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="badge badge-darkorange badge-tag badge-square"></span>
+                    Sports
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="badge badge-yellow badge-tag badge-square"></span>
+                    Friends
+                </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+                <a href="#">
+                    + Add Tag
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

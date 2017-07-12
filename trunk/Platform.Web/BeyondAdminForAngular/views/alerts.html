@@ -1,0 +1,225 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <h5 class="row-title"><i class="fa fa-warning themeprimary"></i>Alerts</h5>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-darkorange">Default Alerts</div>
+                    <div ng-controller="AlertDemoCtrl">
+                        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                        <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-blueberry">Rounded & Shadowed Alerts</div>
+                    <alert type="warning" class="radius-bordered alert-shadowed">
+                        <span class="badge badge-success graded">
+                            0
+                        </span>
+                        <strong>Warning</strong> Your monthly traffic is reaching limit.
+                    </alert>
+                    <alert type="success" class="radius-bordered alert-shadowed">
+                        <span class="badge badge-darkorange graded">
+                            2
+                        </span>
+                        <strong>Success</strong> Two Tasks Are Completed.
+                    </alert>
+                    <alert type="info" class="radius-bordered alert-shadowed">
+                        <span class="badge badge-sky graded">
+                            8
+                        </span>
+                        <strong>Info!</strong> You have 8 unread messages.
+                    </alert>
+                    <alert type="danger" class="radius-bordered alert-shadowed">
+                        <i class="fa-fw fa fa-times"></i>
+                        <strong>Error!</strong> Update has failed.
+                    </alert>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h5 class="row-title before-darkorange"><i class="fa fa-flash darkorange"></i>Tooltips</h5>
+                <div class="well bordered-top bordered-darkorange">
+                    <h5>Inline Tooltips</h5>
+                    <p>
+                        Tight pants next level keffiyeh <a href="#" class="tooltips" tooltip="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" class="tooltips tooltip-pink" tooltip="Another tooltip">have a</a> terry richardson vinyl chambray. <a href="#" class="tooltips tooltip-blueberry" title="" tooltip="12">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+                    </p>
+                    <hr class="wide" />
+                    <h5>Tooltip Positions</h5>
+                    <div class="buttons-preview">
+                        <button class="btn btn-default" tooltip-placement="top" tooltip="Tooltip in top">Top</button>
+                        <button class="btn btn-default" tooltip-placement="left" tooltip="Tooltip in left">Left</button>
+                        <button class="btn btn-default" tooltip-placement="right" tooltip="Tooltip in right">Right</button>
+                        <button class="btn btn-default" tooltip-placement="bottom" tooltip="Tooltip in bottom">Bottom</button>
+                    </div>
+                    <hr class="wide" />
+                    <h5>Tooltip Colors</h5>
+                    <div class="buttons-preview">
+                        <button class="btn btn-danger tooltip-danger" tooltip-placement="top" tooltip="Danger Tooltip">Danger</button>
+                        <button class="btn btn-warning tooltip-warning" tooltip-placement="top" tooltip="Warning Tooltip">Warning</button>
+                        <button class="btn btn-info tooltip-info" tooltip-placement="top" tooltip="Info Tooltip">Info</button>
+                        <button class="btn btn-success tooltip-success" tooltip-placement="top" tooltip="Success Tooltip">Success</button>
+                        <button class="btn btn-blue tooltip-blue" tooltip-placement="top" tooltip="Blue Tooltip">Blue</button>
+                        <button class="btn btn-palegreen tooltip-palegreen" tooltip-placement="top" tooltip="Pale Green Tooltip">Pale Green</button>
+                        <button class="btn btn-darkorange tooltip-darkorange" tooltip-placement="top" tooltip="Dark Orange Tooltip">Dark Orange</button>
+                        <button class="btn btn-magenta tooltip-magenta" tooltip-placement="top" tooltip="Magenta Tooltip">Magenta</button>
+                        <button class="btn btn-purple tooltip-purple" tooltip-placement="top" tooltip="Blue Tooltip">Purple</button>
+                        <button class="btn btn-maroon tooltip-maroon" tooltip-placement="top" tooltip="Maroon Tooltip">Maroon</button>
+                    </div>
+                    <hr class="wide" />
+                    <h5>Tooltip Template & Size</h5>
+                    <div class="buttons-preview">
+
+                        <button class="btn btn-default" tooltip-placement="top" tooltip-html-unsafe="<img src='assets/img/avatars/divyia.jpg'>">With Image</button>
+                        <button class="btn btn-danger tooltip-lg" tooltip-placement="top" tooltip="Large Tooltip">Large Tip</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h5 class="row-title before-blueberry"><i class="fa fa-flash blueberry"></i>Toastr Notifications</h5>
+                <div class="well bordered-top bordered-blue" ng-controller="ToasterCtrl">
+                    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" ng-model="toaster.title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body</label>
+                                <textarea class="form-control" rows="5" ng-model="toaster.text"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Toaster Type</label>
+                            <div class="radio">
+                                <label class="checkbox">
+                                    <input type="radio" name="toasts" ng-model="toaster.type" value="success">
+                                    <span class="text">Success</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="checkbox">
+                                    <input type="radio" name="toasts" ng-model="toaster.type" value="info">
+                                    <span class="text">Info</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="checkbox">
+                                    <input type="radio" name="toasts" ng-model="toaster.type" value="warning">
+                                    <span class="text">Warning</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="checkbox">
+                                    <input type="radio" name="toasts" ng-model="toaster.type" value="error">
+                                    <span class="text">Danger</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info" ng-click="pop()">Show a Toaster</button>
+
+                </div>
+            </div>
+        </div>
+
+        <h5 class="row-title before-pink"><i class="fa fa-bullseye pink"></i>Pop Overs</h5>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="well bordered-top bordered-purple popover-container">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover top dark">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-blue">Dark Popover top</h4>
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover right">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-blueberry">Popover right</h4>
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover bottom">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-palegreen">Popover bottom</h4>
+
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover left">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-pink">Popover left</h4>
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover top">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-warning">Popover</h4>
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="popoverexample">
+                                <div class="popover inverted top">
+                                    <div class="arrow"></div>
+                                    <h4 class="popover-title bordered-blue">Inverted Popover</h4>
+                                    <div class="popover-content">
+                                        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="wide" />
+                    <h5>Popover On Buttons</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="buttons-preview text-align-center">
+                            <a href="javascript:void(0);" class="btn btn-default" popover-append-to-body data-titleclass="bordered-blue" data-class="" popover-placement="top" popover-title="PopOver On Click" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+                                Popover on Click
+                            </a>
+                            <a href="javascript:void(0);" class="btn btn-default" popover-append-to-body data-titleclass="bordered-purple" data-class="dark" popover-trigger="mouseenter" popover-placement="top" popover-title="Hover" popover="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.." data-original-title="" title="">
+                                Popover on Hover
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

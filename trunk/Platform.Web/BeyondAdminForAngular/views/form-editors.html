@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <style>
+        .editor-text {
+            border: 1px solid #cecece;
+            margin-top: 10px;
+            background-color: #fff;
+            padding: 10px;
+        }
+    </style>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat radius-bordered">
+            <div class="widget-header bordered-bottom bordered-themeprimary">
+                <span class="widget-caption">TextAngular : A Lightweight, Two-Way-Bound & Totally Awesome Angular.js Text-Editor</span>
+            </div>
+            <div class="widget-body no-padding">
+                <div ng-controller="TextAngularCtrl">
+                    <div text-angular ng-model="htmlContent" name="demo-editor" ta-text-editor-class="editor-text" ta-html-editor-class="editor-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

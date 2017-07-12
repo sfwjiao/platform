@@ -1,0 +1,139 @@
+﻿<div class="row" ng-controller="app.views.manage.examination.paper.details as vm">
+    <div class="col-sm-12">
+        <div class="wiget" id="paper">
+            <div class="widget-header text-align-left">
+                新乡医学院考试管理系统
+            </div>
+            <div class="widget-body">
+
+                <div class="row" id="paper-body">
+                    <div class="logo">{{paper.name}}</div>
+                    <div class="paper-left col-sm-3">
+                        <div class="select-d" ng-repeat="g in paper.group">
+                            <h1>
+                                {{g.name}}
+                                <a class="btn-default" title="编辑" ng-click="editGroup(g)"><i class="fa fa-server firstt"></i></a>
+                                <a class="btn-default" title="删除" ng-click="deleteGroup(g)"><i class="fa fa-close secondd"></i></a>
+                            </h1>
+                            <div class="select-dc">
+                                <ul class="list-inline" style="margin-left: 0px">
+                                    <li ng-repeat="question in g.questions" ng-class="{ 'selected' : question.isSelected }" ng-click="selectQuestion(question)">{{$index + 1}}</li>
+                                    <li class="btn btn-default pull-left btn-sm" ng-click="addQuestion(g)" style="font-size: 14px"><i class="fa fa-plus"></i>添加</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="button" class="btn btn-default btn-block margin-top-10" ng-click="addGroup()" value="添加大题">
+                    </div>
+                    <div class="paper-right col-sm-9">
+                        <ng-include ng-if="currentQuestion.questionType" src="currentQuestion.questionType + 'View'"></ng-include>
+                        @*<div ng-repeat="right in sum">
+                                <p>{{$index+1}} {{right.type}}</p>
+                                <div ng-repeat="option in right.selftiku">
+                                    <div class="theme-head">
+                                        <strong class="pull-left">{{$index+1}}</strong>
+                                        <p class="pull-left" ng-bind-html="option.stem"></p>
+                                    </div>
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="tag in option.options"><big>{{tag.tags}}</big>&nbsp{{tag.content}}</li>
+                                    </ul>
+                                    <div class="caozuo text-center">
+                                        <a class="btn btn-default purple" ng-click="editpaper(option)"> 编辑 </a>
+                                        <a class="btn btn-default purple" ng-click="delect(option,right)">删除</a>
+                                    </div>
+                                </div>
+                                //<ul class="list-unstyled">
+                                //    <li ng-repeat="tag in option.options"><big>{{tag.tags}}</big>&nbsp{{tag.content}}<i class="fa fa-check pull-right margin-top-10" ng-show="flag"></i></li>
+                                //</ul>
+                                //<div class="caozuo">
+                                //    <a class="btn btn-default purple" ng-click="editpaper(option)"> 编辑 </a>
+                                //    <a class="btn btn-default purple" ng-click="delect(option,right)">删除</a>
+                                //</div>
+                            </div>
+                            <div>
+                                <p>{{$index+3}} {{shicao.type}}</p>
+                                <div ng-repeat="option in shicao.shicaotiku">
+                                    <div class="theme-head">
+                                        <strong class="pull-left">{{$index+1}}</strong>
+                                        <p class="pull-left" ng-bind-html="option.stem"></p>
+                                    </div>
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="tag in option.details">{{tag.content}}</li>
+                                    </ul>
+                                    <div class="caozuo">
+                                        <a class="btn btn-default purple" ng-click="editpaper(option)"> 编辑 </a>
+                                        <a class="btn btn-default purple" ng-click="delect(option,shicao)">删除</a>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="View" type="text/ng-template">
+</script>
+
+<script id="SingleSelectionView" type="text/ng-template">
+    <div class="theme-head">
+        <p class="pull-left" ng-bind-html="currentQuestion.stem"></p>
+        <span class="margin-left-20">({{currentQuestion.score}}分)</span>
+    </div>
+    <ul class="list-unstyled">
+        <li ng-repeat="option in currentQuestion.options">{{option.content}}<i class="fa fa-check pull-right margin-top-10" ng-show="option.isRightKey"></i></li>
+    </ul>
+    <div class="caozuo text-center margin-top-5">
+        <a class="btn btn-default purple " ng-click="editQuestion(currentQuestion)">编辑</a>
+        <a class="btn btn-default purple margin-left-10" ng-click="deleteQuestion(currentQuestion)">删除</a>
+    </div>
+</script>
+
+<script id="MultipleChoiceView" type="text/ng-template">
+    <div class="theme-head">
+        <p class="pull-left" ng-bind-html="currentQuestion.stem"></p>
+        <span class="margin-left-20">({{currentQuestion.score}}分)</span>
+    </div>
+    <ul class="list-unstyled">
+        <li ng-repeat="option in currentQuestion.options">{{option.content}}<i class="fa fa-check pull-right margin-top-10" ng-show="option.isRight"></i></li>
+    </ul>
+    <div class="caozuo text-center margin-top-5">
+        <a class="btn btn-default purple" ng-click="editQuestion(currentQuestion)">编辑</a>
+        <a class="btn btn-default purple margin-left-10" ng-click="deleteQuestion(currentQuestion)">删除</a>
+    </div>
+</script>
+
+<script id="PracticalView" type="text/ng-template">
+    <div class="theme-head">
+        <p class="pull-left" ng-bind-html="currentQuestion.stem"></p>
+        <span class="margin-left-20" style="position:relative;top:10px;">({{currentQuestion.score}}分)</span>
+    </div>
+    <ul class="list-unstyled">
+        <li ng-repeat="option in currentQuestion.options">{{option.content}}<span class="pull-right" style="font-size:13px">{{option.score}}分</span></li>
+    </ul>
+    <div class="caozuo text-center margin-top-5">
+        <a class="btn btn-default purple" ng-click="editQuestion(currentQuestion)">编辑</a>
+        <a class="btn btn-default purple margin-left-10" ng-click="deleteQuestion(currentQuestion)">删除</a>
+    </div>
+</script>
+
+<script id="ComprehensiveView" type="text/ng-template">
+    <div class="theme-head zongheti-hover">
+        <p class="pull-left" ng-bind-html="currentQuestion.stem">
+
+        </p>
+        <a class="btn btn-default purple pull-right margin-right-20 margin-top-5" ng-click="editQuestion(currentQuestion)">编辑</a>
+        <a class="btn btn-default purple pull-right margin-right-5 margin-top-5" ng-click="deleteQuestion(currentQuestion)">删除</a>
+        <span class="margin-left-20" style="position:relative;top:10px;">({{currentQuestion.score}}分)</span>
+    </div>
+
+
+
+    <div class="" ng-repeat="child in currentQuestion.children">
+        <div class="addziti">
+            <ng-include src="child.questionType + 'View'" ng-init="currentQuestion=child"></ng-include>
+        </div>
+
+    </div>
+    <input type="button" class="btn btn-default btn-block margin-top-10" ng-click="addChild(currentQuestion)" value="添加子题">
+</script>

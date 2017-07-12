@@ -1,0 +1,44 @@
+﻿<div class="row" ng-controller="DataTableCtrl">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption">Simple DataTable</span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body">
+                <table ui-jq="dataTable" ui-options="simpleTableOptions" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%">First Name</th>
+                            <th style="width: 25%">Last Name</th>
+                            <th style="width: 25%">Phone #</th>
+                            <th style="width: 30%">Site Name</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-controller="NgGridCtrl">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption">ngGrid</span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body no-padding">
+                <div ng-grid="gridOptions" style="min-height:500px; overflow-x:hidden;"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="row" ng-controller="pulgins.views.manage.trialBalloon.myLibrary">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget" id="widget">
+            <div class="widget-header">
+                <span class="widget-caption mytest">我的题库</span>
+                <div class="widget-buttons">
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body">
+                <a class="btn btn-default btn-lg addxti" style="border-radius:5px" ng-click="addLibrary()"><i class="typcn typcn-th-menu"></i> 添加题库</a>
+                <div class="row margin-top-10">
+                    <div class="col-lg-3 col-md-5 col-sm-6 col-xs-12 " ng-repeat="library in librarys">
+                        <div class="databox bg-white radius-bordered">
+                            <div class="databox-left bg-themeprimary">
+                                <div class="databox-piechart margin-top-10">
+                                    <div class="easyPieChart block-center"><span class="white font-110">{{library.questions.length}}</span></div>
+                                </div>
+                            </div>
+                            <div class="databox-right dw">
+                                <div id="first">
+                                    <a class="databox-number themeprimary" ng-click="gotoQuestions(library)" href="javascript:void(0);">{{library.name}}</a>
+                                    <div class="databox-text darkgray">{{library.points}}</div>
+                                </div>
+                                <div class="second">
+                                    <a class="databox-stat themesecondary radius-bordered" id="bianjishiti" href="javascript:void(0);">
+                                        <div class="bt"><i class="stat-icon icon-lg fa fa-edit" ng-click="editLibrary(library)"></i></div>
+                                        <div class="bt"><i class="stat-icon icon-lg fa fa-remove" ng-click="deleteLibrary(library)"></i></div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

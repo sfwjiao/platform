@@ -1,0 +1,90 @@
+﻿<link rel="stylesheet" href="~/assets/css/paper-edit.css">
+<link rel="stylesheet" href="~/assets/css/reset-min.css" />
+<div class="row" ng-controller="app.views.manage.examination.paper as vm">
+    <div class="col-sm-12">
+        <div class="wiget" id="paper">
+            <div class="widget-header text-align-left">
+                新乡医学院考试管理系统
+            </div>
+            <div class="widget-body">
+
+                <div class="row" id="paper-body">
+                    <div class="logo">2017期末考试S卷</div>
+                    <div class="paper-left col-sm-4">
+                        <div class="select-d" ng-repeat="left in sum">
+                            <h1>
+                                {{$index+1}} {{left.type}}
+                                （每小题{{left.point}}分）
+                                设置分数：
+                                <input type="text" name="name" value="" ng-model="left.point" />
+                            </h1>
+                            <div class="select-dc">
+                                <ul class="list-inline" style="margin-left:0px">
+                                    <li ng-repeat="thead in left.selftiku">{{$index + 1}}</li>
+                                    <li class="btn btn-default pull-left btn-sm" ng-click="addSelect(left)" style="font-size:14px"><i class="fa fa-plus"></i>添加</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="select-d">
+                            <h1>
+                                {{$index+3}} {{shicao.type}}
+                                （每小题{{shicao.point}}分）
+                                设置总分数：
+                                <input type="text" name="name" value="" ng-model="shicao.point" />
+                            </h1>
+                            <div class="select-dc">
+                                <ul class="list-inline">
+                                    <li ng-repeat="thead in shicao.shicaotiku">{{$index + 1}}</li>
+                                    <li class="btn btn-default pull-left btn-sm" ng-click="addSelectshicao(shicao)" style="font-size:14px"><i class="fa fa-plus"></i>添加</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="button" class="btn btn-darkorange btn-block" value="添加题型">
+                    </div>
+                    <!--
+                        作者：1525667999@qq.com
+                        时间：2017-05-25
+                        描述：右边概览
+                    -->
+                    <div class="paper-right col-sm-8">
+                        <div ng-repeat="right in sum">
+                            <p>{{$index+1}} {{right.type}}</p>
+                            <div ng-repeat="option in right.selftiku">
+                                <div class="theme-head">
+                                    <strong class="pull-left">{{$index+1}}</strong><p class="pull-left" ng-bind-html="option.stem"></p>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li ng-repeat="tag in option.options"><big>{{tag.tags}}</big>&nbsp{{tag.content}}</li>
+                                </ul>
+                                <div class="caozuo">
+                                    <a class="btn btn-default purple" ng-click="editpaper(option)"> 编辑 </a>
+                                    <a class="btn btn-default purple" ng-click="delect(option,right)">删除</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>{{$index+3}} {{shicao.type}}</p>
+                            <div ng-repeat="option in shicao.shicaotiku">
+                                <div class="theme-head">
+                                    <strong class="pull-left">{{$index+1}}</strong><p class="pull-left" ng-bind-html="option.stem"></p>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li ng-repeat="tag in option.details">{{tag.content}}</li>
+                                </ul>
+                                <div class="caozuo">
+                                    <a class="btn btn-default purple" ng-click="editpaper(option)"> 编辑 </a>
+                                    <a class="btn btn-default purple" ng-click="delect(option,shicao)">删除</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

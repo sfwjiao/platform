@@ -1,0 +1,104 @@
+﻿@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@using Platform
+
+@model Platform.Web.Models.Account.LoginFormViewModel
+@{
+    Layout = null;
+    SetAntiForgeryCookie();
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>@AppSetting(PlatformConsts.ApplicationConfigSettingNames.WebName)</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.FaviconUrl)" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <!--Beyond styles-->
+    <link href="/Content/themes/beyond/beyond.min.css" rel="stylesheet" />
+    <link href="/Content/themes/beyond/demo.min.css" rel="stylesheet" />
+    <link href="/Content/animate.min.css" rel="stylesheet" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <form id="loginFrom" method="post" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" novalidate="novalidate">
+        <div class="login-container animated fadeInDown">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">登&nbsp;&nbsp;录</div>
+                <div class="loginbox-social">
+                    <div class="social-title ">@AppSetting(PlatformConsts.ApplicationConfigSettingNames.PojectName)</div>
+                    <div class="social-buttons">
+                        <a href="#" class="navbar-brand">
+                            <small>
+                                <img src="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.CoverUrl)" alt="" />
+                            </small>
+                        </a>
+                    </div>
+                </div>
+                <div class="loginbox-or">
+                    <div class="or-line"></div>
+                </div>
+                <div class="loginbox-textbox form-group">
+                    <input type="text" class="form-control" placeholder="账号" name="loginid" />
+                </div>
+                <div class="loginbox-textbox form-group">
+                    <input type="password" class="form-control" placeholder="密码" name="pwd" />
+                </div>
+                <div class="loginbox-submit form-group">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary btn-block">登录</button>
+                </div>
+                <div class="loginbox-signup">
+                    @Html.Raw(@AppSetting(PlatformConsts.ApplicationConfigSettingNames.CompanyCopyright))
+                </div>
+            </div>
+            @*<div class="logobox loginbox bg-white">
+                </div>*@
+            <div id="captcha"></div>
+        </div>
+    </form>
+
+    <!--Basic Scripts-->
+    <script src="/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="/Scripts/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Abp/Framework/scripts/utils/ie10fix.js"></script>
+    <script src="/Scripts/bootbox/bootbox.js"></script>
+
+    <!--Beyond Scripts-->
+
+    <script src="/Scripts/json2.min.js"></script>
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Abp/Framework/scripts/abp.js"></script>
+    <script src="/Abp/Framework/scripts/libs/abp.bootbox.js"></script>
+    <script src="/Abp/Framework/scripts/libs/abp.jquery.js"></script>
+
+    <script>
+        //Localizing momentjs
+        moment.locale('zh-CN');
+    </script>
+
+    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+    @Html.IncludeScript("~/Scripts/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/Views/Account/Login.js")
+
+</body>
+<!--  /Body -->
+</html>

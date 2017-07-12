@@ -1,0 +1,64 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+    </div>
+</div>
+<div class="sparkline-preview">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-blue">Bar Chart</div>
+                        <div ui-jq="sparkline" ui-options="[5,6,7,2,0,-4,-2,4], {type:'bar', height:75, width:'100%', barColor:'{{settings.color.themeprimary}}', negBarColor:'{{settings.color.themesecondary}}', zeroColor:'{{settings.color.themethirdcolor}}', barWidth:10, barSpacing:5  }"></div>
+                        <div class="footer"><code>data-sparkline="bar"</code></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-pink">Line Chart</div>
+                        <div ui-jq="sparkline" ui-options="[5,6,7,9,9,5,3,4,4,3,6,7], {type:'line', height:75, width:'100%', fillColor:'{{settings.color.themeprimary}}', lineColor:'{{settings.color.themeprimary}}'  }"></div>
+                        <div class="footer"><code>data-sparkline="line"</code></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-blueberry">Tristate Chart</div>
+                        <div ui-jq="sparkline" ui-options="[1,1,0,1,-1,-1,1,-1,0,0,1,1], {type:'tristate', height:75, width:'100%', barWidth:8, barSpacing:4, zeroAxis:false, posBarColor:'{{settings.color.themeprimary}}', negBarColor:'{{settings.color.themesecondary}}' , zeroBarColor:'{{settings.color.themethirdcolor}}' }"></div>
+                        <div class="footer"><code>data-sparkline="tristate"</code></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-darkpink">Discrete Chart</div>
+                        <div ui-jq="sparkline" ui-options="[4,6,7,7,4,3,2,1,4,4], {type:'discrete', tresholdValue:3, tresholdColor:'#d73d32', lineColor:'57b5e3' }"></div>
+                        <div class="footer"><code>data-sparkline="discrete"</code></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-sky">Bullet Chart</div>
+                        <div ui-jq="sparkline" ui-options="[10, 12, 12, 9, 7], {type:'bullet', height:30, width:'100%', targetColor:'#444', performanceColor:'#11a9cc' , rangeColors:['#5db2ff', '#6f85bf' , '#4374e0' ] }"></div>
+                        <div class="footer"><code>data-sparkline="bullet"</code></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-carbon">Box Plot Chart</div>
+                        <div ui-jq="sparkline" ui-options="[4, 27, 34, 52, 54, 59, 61, 68, 78, 82, 85, 87, 91, 93, 100], {type:'box', height:30, width:'100%'}"></div>
+                        <div class="footer"><code>data-sparkline="box"</code></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="well with-header with-footer">
+                        <div class="header bordered-lightred">Pie Chart</div>
+                        <div ui-jq="sparkline" ui-options="[1,1,2,1], {type:'pie', height:75, width:75, borderColor:'#fafafa' ,slicecolors:['#5db2ff', '#f4b400' , '#d73d32' ,'#8cc474']}"></div>
+                        <div class="footer"><code>data-sparkline="pie"</code></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

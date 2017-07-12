@@ -1,0 +1,138 @@
+﻿<div ng-controller="FlotCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">Bar Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+
+                    <div ui-jq="plot" ui-options="{{BarChartData}},{{BarChartOptions}}" class="chart chart-lg"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-space"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <span class="widget-caption">Selectable & Zoomable & Trackable Line Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div ui-jq="plot" ui-options="{{SelectableChartData}},{{SelectableChartOptions}}" id="selectable-chart" class="chart chart-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-space"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">Real-Time Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+
+                    <div flot-chart-realtime class="chart chart-lg"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-space"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">Stacked Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div ui-jq="plot" ui-options="{{StackedChartData}}, {{StackedChartOptions}}" class="chart chart-lg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-space"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">Chart with Annotations</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div ui-jq="plot" ui-options="{{IndicatorChartData}}, {{IndicatorChartOptions}}" class="chart chart-xl"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-space"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption" id="title">Pie Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div id="pie-chart" ui-jq="plot" ui-options="{{PieChartData}}, {{PieChartOptions}}" class="chart chart-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption" id="title">Horizonal Chart</span>
+                    <div class="widget-buttons">
+                        <a href="" widget-maximize></a>
+                        <a href="" widget-collapse></a>
+                        <a href="" widget-dispose></a>
+                    </div>
+                </div>
+                <div class="widget-body">
+
+                    <div ui-jq="plot" ui-options="{{HorizontalChartData}},{{HorizontalChartOptions}}" class="chart chart-lg"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

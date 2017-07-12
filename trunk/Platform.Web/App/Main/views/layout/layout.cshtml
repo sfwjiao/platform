@@ -1,0 +1,236 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@using Platform
+@{
+    Layout = null;
+    SetAntiForgeryCookie();
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app" ng-controller="app.views.layout">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <meta lang="zh-CN" />
+    <title>@AppSetting(PlatformConsts.ApplicationConfigSettingNames.WebName)</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.FaviconUrl)" type="image/x-icon">
+
+    <!--Basic Styles-->
+    @Styles.Render("~/Bundles/App/vendor/css")
+    <link ng-href="{{settings.skin}}" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Scripts/others/html5shiv.js")"></script>
+        <script src="@Url.Content("~/Scripts/others/respond.min.js")"></script>
+    <![endif]-->
+    @Scripts.Render("~/Bundles/App/vendor/js")
+    <script>
+        //Localizing momentjs
+        moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+    </script>
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+    <script src="~/api/AbpServiceProxies/GetAll?type=angular&v=@(Clock.Now.Ticks)"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+
+    <!-- SignalR scripts -->
+    <script src="~/signalr/hubs"></script>
+    @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
+
+    @Scripts.Render("~/Bundles/App/Common/js")
+    @Scripts.Render("~/Bundles/App/Main/js")
+    @Scripts.Render("~/Bundles/App/Main/plugins/js")
+    <script src="~/App/Main/views/layout/layout.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <div>
+        <!-- Loading Container -->
+        <div class="loading-container"><div class="loading-bar"></div></div>
+        <!--  /Loading Container -->
+        <!-- Navbar -->
+        <div class="navbar {{settings.fixed.navbar ? 'navbar-fixed-top' : ''}}">
+            <div class="navbar-inner">
+                <div class="navbar-container">
+                    <!-- Navbar Barnd -->
+                    <div class="navbar-header pull-left">
+                        <a href="#" class="navbar-brand">
+                            <small>
+                                <img src="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.LogoUrl)" alt="" />
+                            </small>
+                        </a>
+                    </div>
+                    <!-- /Navbar Barnd -->
+                    <!-- Sidebar Collapse -->
+                    <div class="sidebar-collapse"></div>
+                    <!-- /Sidebar Collapse -->
+                    <!-- Account Area and Settings --->
+                    <div class="navbar-header pull-right">
+                        <div class="navbar-account">
+                            <ul class="account-area">
+                                <li>
+                                    <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                        <div class="avatar" title="View your public profile">
+                                            <img src="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.UserAvatarUrl)" alt="">
+                                        </div>
+                                        <section style="width: 80px !important;">
+                                            <h2><span class="profile"><span>{{currentUser.name}}</span></span></h2>
+                                        </section>
+                                    </a>
+                                    <!--Login Area Dropdown-->
+                                    <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                        <li class="username"><a>{{currentUser.name}}</a></li>
+                                        <li class="email"><a>{{currentUser.userName}}</a></li>
+                                        <!--Avatar Area-->
+                                        <li>
+                                            <div class="avatar-area">
+                                                <img src="@AppSetting(PlatformConsts.ApplicationConfigSettingNames.UserAvatarUrl)" class="avatar" alt="">
+                                            </div>
+                                        </li>
+                                        <!--Theme Selector Area-->
+                                        <li class="theme-area">
+                                            <ul class="colorpicker">
+                                                <li><a class="colorpick-btn" href="" style="background-color: #5DB2FF;" skin-changer rel="Content/themes/beyond/skins/blue.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #2dc3e8;" skin-changer rel="Content/themes/beyond/skins/azure.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #03B3B2;" skin-changer rel="Content/themes/beyond/skins/teal.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #53a93f;" skin-changer rel="Content/themes/beyond/skins/green.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #FF8F32;" skin-changer rel="Content/themes/beyond/skins/orange.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #cc324b;" skin-changer rel="Content/themes/beyond/skins/pink.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #AC193D;" skin-changer rel="Content/themes/beyond/skins/darkred.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #8C0095;" skin-changer rel="Content/themes/beyond/skins/purple.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #0072C6;" skin-changer rel="Content/themes/beyond/skins/darkblue.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #585858;" skin-changer rel="Content/themes/beyond/skins/gray.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #474544;" skin-changer rel="Content/themes/beyond/skins/black.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="" style="background-color: #001940;" skin-changer rel="Content/themes/beyond/skins/deepblue.min.css"></a></li>
+                                            </ul>
+                                        </li>
+                                        <!--/Theme Selector Area-->
+                                        <li class="dropdown-footer">
+                                            <a href="@Url.Action("Logout", "Account")">
+                                                @L("Layout_SignOut")
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--/Login Area Dropdown-->
+                                </li>
+                                <!-- /Account Area -->
+                            </ul>
+                            <!--Note: notice that setting div must start right after account area list.
+                            no space must be between these elements-->
+                            <!-- Settings -->
+                            <div class="setting">
+                            </div>
+                            <div class="setting-container">
+                                <label>
+                                    <input type="checkbox" id="checkbox_fixednavbar" ng-model="settings.fixed.navbar" ng-hide="true" />
+                                    <span class="text">@L("Layout_FixedNavbar")</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="checkbox_fixedsidebar" ng-model="settings.fixed.sidebar" ng-hide="true" />
+                                    <span class="text">@L("Layout_FixedSideBar")</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="checkbox_fixedbreadcrumbs" ng-model="settings.fixed.breadcrumbs" ng-hide="true" />
+                                    <span class="text">@L("Layout_FixedBreadCrumbs")</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="checkbox_fixedheader" ng-model="settings.fixed.header" ng-hide="true" />
+                                    <span class="text">@L("Layout_FixedHeader")</span>
+                                </label>
+                            </div>
+                            <!-- Settings -->
+                        </div>
+                    </div>
+                    <!-- /Account Area and Settings -->
+                </div>
+            </div>
+        </div>
+        <!-- /Navbar -->
+        <div class="main-container container-fluid">
+            <!-- Page Container -->
+            <div class="page-container">
+                <!-- Page Sidebar -->
+                <div class="page-sidebar {{settings.fixed.sidebar ? 'sidebar-fixed' : ''}}" id="sidebar">
+                    <!-- Page Sidebar Header-->
+                    @*<div class="sidebar-header-wrapper">
+                        <input type="text" class="searchinput" />
+                        <i class="searchicon fa fa-search"></i>
+                        <div class="searchhelper"></div>
+                    </div>*@
+                    <!-- /Page Sidebar Header -->
+                    <!-- Sidebar Menu -->
+                    <ul class="nav sidebar-menu">
+                        <li ng-repeat="menuItem in menu.items">
+                            <a ng-if="!menuItem.items.length" ng-href="{{menuItem.url}}">
+                                <i ng-if="menuItem.icon" class="menu-icon {{menuItem.icon}}"></i>
+                                <span class="menu-text"> {{menuItem.displayName}} </span>
+                            </a>
+                            <a ng-if="menuItem.items.length" href="#" class="menu-dropdown">
+                                <i ng-if="menuItem.icon" class="menu-icon {{menuItem.icon}}"></i>
+                                <span class="menu-text"> {{menuItem.displayName}} </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            @*<!-- TODO:目前只支持两级菜单，多级可修改此处代码，改用ng-include方式 -->*@
+                            <ul ng-if="menuItem.items.length" class="submenu">
+                                <li ng-repeat="menuSubItem in menuItem.items">
+                                    <a ng-href="{{menuSubItem.url}}">
+                                        <i ng-if="menuSubItem.icon" class="menu-icon {{menuSubItem.icon}}"></i>
+                                        <span class="menu-text">{{menuSubItem.displayName}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- /Sidebar Menu -->
+                </div>
+                <!-- /Page Sidebar -->
+                <!-- Page Content -->
+                <div class="page-content">
+                    <!-- Page Breadcrumb -->
+                    <div class="page-breadcrumbs {{settings.fixed.breadcrumbs ? 'breadcrumbs-fixed' : ''}}">
+                        <div ncy-breadcrumb></div>
+                    </div>
+                    <!-- /Page Breadcrumb -->
+                    <!-- Page Header -->
+                    <div class="page-header position-relative {{settings.fixed.header ? 'page-header-fixed' : ''}}">
+                        <div class="header-title">
+                            <h1 header-title></h1>
+                        </div>
+                        <!--Header Buttons-->
+                        <div class="header-buttons">
+                            <a href="" class="sidebar-toggler"></a>
+                            <a href="" class="refresh"></a>
+                            <a href="" class="fullscreen"></a>
+                        </div>
+                        <!--Header Buttons End-->
+                    </div>
+                    <!-- /Page Header -->
+                    <!-- Page Body -->
+                    <div class="page-body" ui-view>
+                        <!-- Your Content Goes Here -->
+                    </div>
+                    <!-- /Page Body -->
+                </div>
+                <!-- /Page Content -->
+            </div>
+            <!-- /Page Container -->
+            <!-- Main Container -->
+
+        </div>
+    </div>
+</body>
+<!--  /Body -->
+</html>

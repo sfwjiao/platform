@@ -1,0 +1,35 @@
+﻿<div class="row" ng-controller="examination.views.manage.trialBalloon.subjectUnit">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <span class="widget-caption"></span>
+
+                <div class="widget-buttons">
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" id="btn">
+                <a class="btn btn-default" ng-click="addSubjectUnit()"id="addbigsub"><i class="typcn typcn-th-menu"></i> 添加科目</a>
+                <div class="dd dd-draghandle darker">
+                    <ol class="dd-list" ng-include="'subjectUnitView'"></ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="subjectUnitView" type="text/ng-template">
+    <li class="dd-item dd2-item" ng-repeat="subjectUnit in subjectUnits">
+        <div class="dd2-handle">
+            <i class="normal-icon typcn typcn-th-menu"></i>
+            <i class="drag-icon fa fa-arrows-alt "></i>
+        </div>
+        <div class="dd2-content">
+            <a class="btn btn-danger btn-sm  delete margin-left-5 pull-right" ng-click="deleteSubjectUnit(subjectUnit, subjectUnits)"><i class="fa fa-university"></i>删除</a>
+            <a class="btn btn-info btn-sm edit margin-left-5 pull-right" ng-click="editSubjectUnit(subjectUnit)"><i class="fa fa-file-text"></i>编辑</a>
+            <a class="btn btn-info edit btn-sm pull-right" ng-click="addSubjectUnit(subjectUnit)"><i class="fa fa-plus-circle"></i>添加子科目</a>
+            {{subjectUnit.displayName}}
+        </div>
+        <ol class="dd-list" style="" ng-if="subjectUnit.children.length" ng-include="'subjectUnitView'" ng-init="subjectUnits=subjectUnit.children"></ol>
+    </li>
+</script>

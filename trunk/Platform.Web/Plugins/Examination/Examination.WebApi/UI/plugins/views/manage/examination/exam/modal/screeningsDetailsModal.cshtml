@@ -1,0 +1,67 @@
+﻿<div class="row">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="tab-pane active" id="info-tab">
+                <form name="formAdd" role="form" novalidate class="row form-horizontal bv-form modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.name.$invalid && !formAdd.name.$pristine }">
+                            <label>场次名称</label>
+                            <input type="text" placeholder="请输入场次名称" name="name" ng-model="screenings.name" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="help-block">请填写场次名称</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.startDate.$invalid && !formAdd.startDate.$pristine && formAdd.startTime.$invalid && !formAdd.startTime.$pristine }">
+                            <label>开始时间</label>
+                            <div class="input-group">
+                                <input type="text" name="startDate" class="form-control" ng-click="datepickerForStart.open($event)" datepicker-popup="{{datepickerForStart.format}}" ng-model="templateData.startDate" is-open="datepickerForStart.opened" datepicker-options="datepickerForStart.dateOptions" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="datepickerForStart.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                            <div>
+                                <input type="text" data-mask="99:99" placeholder="00:00" name="startTime" ng-model="templateData.startTime" class="form-control" required>
+                            </div>
+                            <p ng-show="formAdd.startDate.$invalid && !formAdd.startDate.$pristine && formAdd.startTime.$invalid && !formAdd.startTime.$pristine" class="help-block">请填写开始时间</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.endDate.$invalid && !formAdd.endDate.$pristine && formAdd.endTime.$invalid && !formAdd.endTime.$pristine }">
+                            <label>结束时间</label>
+                            <div class="input-group">
+                                <input type="text" name="endDate" class="form-control" ng-click="datepickerForEnd.open($event)" datepicker-popup="{{datepickerForEnd.format}}" ng-model="templateData.endDate" is-open="datepickerForEnd.opened" datepicker-options="datepickerForEnd.dateOptions" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="datepickerForEnd.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                            <div>
+                                <input type="text" data-mask="99:99" placeholder="00:00" name="endTime" ng-model="templateData.endTime" class="form-control" required>
+                            </div>
+                            <p ng-show="formAdd.endDate.$invalid && !formAdd.endDate.$pristine && formAdd.endTime.$invalid && !formAdd.endTime.$pristine" class="help-block">请填写结束时间</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.examinationMode.$invalid && !formAdd.examinationMode.$pristine }">
+                            <label>考试方式</label>
+                            <ui-select name="examinationMode" ng-model="screenings.examinationMode" theme="select2" style="width: 100%;" required>
+                                <ui-select-match placeholder="请选择考试方式">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="examinationMode.key as examinationMode in examinationModes| filter:$select.search">
+                                    <div ng-bind-html="examinationMode.name| highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <p ng-show="formAdd.examinationMode.$invalid && !formAdd.examinationMode.$pristine" class="help-block">请填写考场</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.examinationRoom.$invalid && !formAdd.examinationRoom.$pristine }">
+                            <label>考场</label>
+                            <input type="text" placeholder="请填写考场" name="examinationRoom" ng-model="screenings.examinationRoom" class="form-control" required>
+                            <p ng-show="formAdd.examinationRoom.$invalid && !formAdd.examinationRoom.$pristine" class="help-block">请填写考场</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" ng-click="save()" ng-disabled="formAdd.$invalid" class="btn btn-default">提交</button>
+            <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+    </div>
+</div>
+

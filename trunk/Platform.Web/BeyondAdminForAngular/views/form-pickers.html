@@ -1,0 +1,664 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <h5 class="row-title before-blue"><i class="fa fa-tags blue"></i>Select and Tags Input</h5>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-palegreen">Jquery Select2 (AngularJS ui-select)</div>
+                    <div ng-controller="Select2DemoCtrl">
+
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Default</label>
+                                    <div class="col-sm-6">
+
+                                        <ui-select ng-model="person.selected" theme="bootstrap">
+                                            <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices repeat="item in people | filter: $select.search">
+                                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                                <small ng-bind-html="item.email | highlight: $select.search"></small>
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Grouped</label>
+                                    <div class="col-sm-6">
+
+                                        <ui-select ng-model="person.selected" theme="bootstrap">
+                                            <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices group-by="'country'" repeat="item in people | filter: $select.search">
+                                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                                <small ng-bind-html="item.email | highlight: $select.search"></small>
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">With a clear button</label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+
+                                            <ui-select allow-clear ng-model="person.selected" theme="bootstrap">
+                                                <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                                                <ui-select-choices repeat="item in people | filter: $select.search">
+                                                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                                    <small ng-bind-html="item.email | highlight: $select.search"></small>
+                                                </ui-select-choices>
+                                            </ui-select>
+
+                                            <span class="input-group-btn">
+                                                <button ng-click="person.selected = undefined" class="btn btn-default">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Disabled</label>
+                                    <div class="col-sm-6">
+
+                                        <ui-select ng-model="person.selected" theme="bootstrap" ng-disabled="true">
+                                            <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices repeat="item in people | filter: $select.search">
+                                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                                <small ng-bind-html="item.email | highlight: $select.search"></small>
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                        <pre>Selected: {{person.selected.name}}</pre>
+
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Multi-Select</label>
+                                    <div class="col-sm-9">
+
+                                        <ui-select multiple ng-model="multipleDemo.colors" theme="select2" ng-disabled="disabled" style="width: 300px;">
+                                            <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+                                            <ui-select-choices repeat="color in availableColors | filter:$select.search">
+                                                {{color}}
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <pre>Selected: {{multipleDemo.colors}}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-darkorange">Bootstrap Tags Inpud (ngTagsInput)</div>
+                    <div ng-app="myApp" ng-controller="TagsInputCtrl">
+                        <tags-input ng-model="tags">
+                            <auto-complete source="loadTags($query)"></auto-complete>
+                        </tags-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 class="row-title before-red"><i class="glyphicon glyphicon-time red"></i>Date and Time Pickers</h5>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-pink">Bootstrap Date Picker (ui.bootstrap.datepicker) </div>
+                    <div ng-controller="DatepickerDemoCtrl">
+                        <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+                        <h4>Inline</h4>
+                        <div style="display:inline-block; min-height:240px;">
+                            <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                        </div>
+                        <hr class="wide" />
+                        <h4>Popup</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+                            </div>
+                        </div>
+
+                        <hr class="wide" />
+                        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+                        <button type="button" class="btn btn-sm btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>
+                        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+                        <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" tooltip="After today restriction">Min date</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-blue">Bootstrap Time Picker (ui.bootstrap.timepicker)</div>
+                    <div ng-controller="TimepickerDemoCtrl">
+
+                        <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                        <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                Hours step is:
+                                <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                            </div>
+                            <div class="col-xs-6">
+                                Minutes step is:
+                                <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+                        <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+                        <button class="btn btn-danger" ng-click="clear()">Clear</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-yellow">Bootstrap Range Date Picker</div>
+                    <div class="form-group">
+                        <label for="reservation">Reservation dates</label>
+                        <div class="controls">
+                            <div ng-controller="DateRangePickerCtrl">
+                                <input date-range-picker class="form-control date-picker" type="text" ng-model="date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 class="row-title before-sky"><i class="fa fa-square-o sky"></i>Text Area and Spinboxs</h5>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-darkpink">Text Area</div>
+                    <h6>Default Text Area</h6>
+                    <textarea class="form-control" rows="6" id="form-field-8" placeholder="Default Text"></textarea>
+                    <hr class="wide" />
+                    <h6>AutoSize Text Area With Animation</h6>
+                    '<textarea class="form-control" id="textareaanimated" placeholder="Write Something to See Autosize Function" ui-jq="autosize" ui-options="{ append: '\n' }"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-palegreen">Spinbox Controls</div>
+                    <h6>Vertical Spinboxs</h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control" value="1" />
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up blue">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down danger">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up blue">
+                                        <i class="fa fa-angle-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down darkorange">
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up success">
+                                        <i class="fa fa-angle-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down danger">
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up maroon">
+                                        <i class="fa fa-angle-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down magenta">
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up darkcarbon">
+                                        <i class="fa fa-arrow-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down sonic-silver">
+                                        <i class="fa fa-arrow-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox spinbox-right" ui-jq="spinbox">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical ">
+                                    <button type="button" class="btn spinbox-up success">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down danger">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="spinbox-input form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group btn-group-vertical">
+                                    <button type="button" class="btn spinbox-up success">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-down danger">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+                    <h6>Horizontal Spinbox</h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox spinbox-horizontal" ui-jq="spinbox">
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group">
+
+                                    <button type="button" class="btn spinbox-down blueberry">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-up purple">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox spinbox-horizontal spinbox-right" ui-jq="spinbox">
+                                <div class="spinbox-buttons	btn-group">
+                                    <button type="button" class="btn spinbox-down blueberry">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn spinbox-up purple">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="spinbox-input form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+                    <h6>Two-Sided Horizontal Spinbox</h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="spinbox spinbox-horizontal spinbox-two-sided" ui-jq="spinbox">
+                                <div class="spinbox-buttons	btn-group spinbox-buttons-left">
+                                    <button type="button" class="btn spinbox-down danger">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="spinbox-input form-control">
+                                <div class="spinbox-buttons	btn-group spinbox-buttons-right">
+                                    <button type="button" class="btn spinbox-up blue">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <h5 class="row-title before-darkpink"><i class="fa fa-upload darkpink"></i>DropzoneJs</h5>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well with-header">
+                    <div class="header bordered-darkpink">File Uploader with preview</div>
+                    <form action="/upload" class="dropzone" drop-zone="" id="file-dropzone"></form>
+                </div>
+            </div>
+        </div>
+        <h5 class="row-title before-palegreen"><i class="fa fa-circle-o palegreen"></i>Jquery Knob</h5>
+        <div class="row">
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-darkorange">Previous Value</div>
+                    <div class="knob-container">
+                        <input ui-jq="knob" data-width="75" data-displayprevious=true data-fgcolor="#ed4e2a" data-cursor=true value="25" data-thickness=".2">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-warning">Color and Size</div>
+                    <div class="knob-container">
+                        <input ui-jq="knob" data-width="100" data-cursor=true data-fgcolor="#f4b400" data-thickness=.25 value="10">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-blue"> Angle offset</div>
+                    <div class="knob-container">
+                        <input ui-jq="knob" data-angleoffset=90 data-linecap=round data-fgcolor="#5DB2FF" value="15" data-thickness=".25">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="well with-header">
+                    <div class="header bordered-palegreen">Angle offset and arc</div>
+                    <div class="knob-container">
+                        <input ui-jq="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#8cc474" data-rotation="clockwise" value="35" data-thickness=".25">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h5 class="row-title before-blueberry"><i class="fa fa-picture-o blueberry"></i>jQuery MiniColors</h5>
+                <div class="well bordered-top bordered-blueberry" ng-controller="MiniColorsCtrl">
+                    <!-- Control types -->
+                    <h3>Control Types:</h3>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="hue-demo">Hue (default): {{color.hue}}</label>
+                                <div class="form-group">
+                                    <input minicolors
+                                           id="hue-demo"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.hue">
+                                </div>
+                                <label for="saturation-demo">Saturation: {{color.saturation}}</label>
+                                <div class="form-group">
+                                    <input minicolors="saturationsettings"
+                                           id="saturation-demo"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.saturation">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="brightness-demo">Brightness: {{color.brightness}}</label>
+                                <div class="form-group">
+                                    <input minicolors="brightnesssettings"
+                                           id="brightness-demo"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.brightness">
+                                </div>
+                                <label for="wheel-demo">Wheel: {{color.wheel}}</label>
+                                <div class="form-group">
+                                    <input minicolors="wheelsettings"
+                                           id="wheel-demo"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.wheel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input modes -->
+                    <h3>Input Modes:</h3>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="text-field">Text field (default): {{color.textfield}}</label>
+                                <div class="form-group">
+                                    <input minicolors
+                                           id="text-field"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.textfield">
+                                </div>
+                                <label for="hidden-input">Hidden Input: {{color.hidden}}</label>
+                                <div class="form-group">
+                                    <input minicolors="hiddensettings"
+                                           id="hidden-input"
+                                           type="hidden"
+                                           ng-model="color.hidden">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="inline">Inline: {{color.inline}}</label><br>
+                                <div class="form-group">
+                                    <input minicolors="inlinesettings"
+                                           id="inline"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.inline">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Positions:</h3>
+                    <div class="well">
+                        <p>
+                            Valid positions include <code>bottom left</code>, <code>bottom right</code>, <code>
+                                top
+                                left
+                            </code>, and <code>top right</code>.
+                        </p>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="position-bottom-left">bottom left (default): {{color.bottomleft}}</label>
+                                <div class="form-group">
+                                    <input minicolors
+                                           id="position-bottom-left"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.bottomleft">
+                                </div>
+                                <label for="position-top-left">top left: {{color.topleft}}</label>
+                                <div class="form-group">
+                                    <input minicolors="topleftsettings"
+                                           id="position-top-left"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.topleft">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="position-bottom-right">bottom right: {{color.bottomright}}</label>
+                                <div class="form-group">
+                                    <input minicolors="bottomrightsettings"
+                                           id="position-bottom-right"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.bottomright">
+                                </div>
+                                <label for="position-top-right">top right: {{color.topright}}</label>
+                                <div class="form-group">
+                                    <input minicolors="toprightsettings"
+                                           id="position-top-right"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.topright">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>&hellip;and more!</h3>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="opacity">Opacity: {{color.opacity}}</label>
+                                <div class="form-group">
+                                    <input minicolors="opacitysettings"
+                                           id="opacity"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.opacity">
+                                </div>
+                                <span class="help-block">
+                                    Opacity can be assigned by setting the <code>opacity</code> option to <code>true</code>.
+                                </span>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="letter-case">Letter Case: {{color.lettercase}}</label>
+                                <div class="form-group">
+                                    <input minicolors="lettercasesettings"
+                                           id="letter-case"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.lettercase">
+                                </div>
+                                <span class="help-block">
+                                    This field will always be uppercase.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3>Working with Angular form-validation</h3>
+                    <span class="help-block">
+                        Use like any other input with <a href="http://docs.angularjs.org/guide/forms">Angular form-validation</a>.
+                    </span>
+                    <form name="form1">
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-12">
+                                    <label for="opacity">Opacity: {{color.formvalidation}}</label>
+                                    <div class="form-group">
+                                        <input minicolors="topleftsettings"
+                                               name="formvalidation"
+                                               class="form-control"
+                                               type="text"
+                                               ng-model="color.formvalidation"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-12">
+                                    <p>Form valid: {{form1.$valid}}</p>
+                                    <button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <h3>Random Color</h3>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-12">
+                                <label for="random">Opacity: {{color.random}}</label>
+                                <div class="form-group">
+                                    <input minicolors
+                                           id="random"
+                                           class="form-control"
+                                           type="text"
+                                           ng-model="color.random">
+                                </div>
+                                <span class="help-block">
+                                    <button class="btn btn-default" ng-click="randomColor()">Assign Random Color</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h5 class="row-title before-darkpink"><i class="fa fa-exchange darkpink"></i>Angular Slider</h5>
+                <div class="well bordered-top bordered-darkpink" ng-controller="SliderCtrl">
+                    <p>Single Knob: ( {{cost}} )</p>
+                    <slider ng-model="number"
+                            floor="1"
+                            ceiling="100">
+                    </slider>
+                    <hr class="wide" />
+                    <p>Dual Knob: ( Start:{{range.start}} -- End:{{range.end}} )</p>
+                    <slider ng-model="range.start"
+                            ng-model-range="range.end"
+                            floor="1"
+                            ceiling="100">
+                    </slider>
+
+                    <hr class="wide" />
+                    <p>Formatting:</p>
+                    <slider ng-model="price"
+                            translate-fn="getCurrency"
+                            floor="1"
+                            ceiling="100">
+                    </slider>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

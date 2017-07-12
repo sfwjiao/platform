@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="tab-pane active" id="info-tab">
+                <form name="formAdd" role="form" novalidate class="row form-horizontal bv-form modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group" ng-class="{ 'has-error' : formAdd.name.$invalid && !formAdd.name.$pristine }">
+                            <label>学院</label>
+                            <input type="text" placeholder="请填写考生学院" name="displayName" ng-model="examinee.department" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="text-center">请填写考生学院</p>
+                            <label>班级</label>
+                            <input type="text" placeholder="请填写考生班级" name="displayName" ng-model="examinee.className" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="text-center">请填写考生班级</p>
+                            <label>学号</label>
+                            <input type="text" placeholder="请填写考生学号" name="displayName" ng-model="examinee.number" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="text-center">请填写考生学号</p>
+                            <label>姓名</label>
+                            <input type="text" placeholder="请填写考生姓名" name="displayName" ng-model="examinee.name" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="text-center">请填写考生姓名</p>
+                            <label>性别</label>
+                            <input type="text" placeholder="请填写考生性别" name="displayName" ng-model="examinee.gender" class="form-control" required>
+                            <p ng-show="formAdd.name.$invalid && !formAdd.name.$pristine" class="help-block">请填写考生性别</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" ng-click="save()" ng-disabled="formAdd.$invalid" class="btn btn-default">提交</button>
+            <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+    </div>
+</div>
