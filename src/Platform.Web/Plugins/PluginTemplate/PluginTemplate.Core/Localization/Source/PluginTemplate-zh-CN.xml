@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="Custom" value="Crm系统" />
+    <text name="Custom_Customer" value="客户管理" />
+    <text name="Custom_CustomerDescirption" value="客户信息列表" />
+  </texts>
+</localizationDictionary>

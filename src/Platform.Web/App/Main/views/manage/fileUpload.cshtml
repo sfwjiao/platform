@@ -1,0 +1,26 @@
+﻿<div class="row" ng-controller="app.views.manage.fileUpload">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget  radius-bordered">
+            <div class="widget-header">
+                <span class="widget-caption"></span>
+            </div>
+            <div class="widget-body">
+                <div class="docs-example">
+                    <ul class="nav nav-tabs tabs-flat">
+                        <li class="active"><a href="javascript:void(0);" data-toggle="tab">上传文件</a></li>
+                    </ul>
+
+                    <div class="tab-content tabs-flat">
+                        <div class="tab-pane active" id="info-tab">
+                            <input type="file" ngf-select="submit()" ng-model="file" accept="image/png" multiple />
+                            <button type="submit" ng-click="submit()">submit</button>
+                            @*<img src="{{uploadImg}}" />
+                                当前上传用户:<input type="text" placeholder="请输入您的名称" name="name" ng-model="username" /><div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*" accept="image/*" ngf-max-size="20MB" ngf-min-height="100">Select</div><button type="submit" ng-click="submit()">submit</button> {{fileInfo.name}}<br /> {{fileInfo.size}}*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
