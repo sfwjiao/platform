@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Hosting;
 using Abp.Castle.Logging.Log4Net;
 using Abp.PlugIns;
+using Abp.Timing;
 using Abp.Web;
 using Castle.Facilities.Logging;
 using Platform.Web;

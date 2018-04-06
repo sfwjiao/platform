@@ -30,6 +30,28 @@
 	                    ]
 	                }
 	            })
+                .state("manage_AuditLog", {
+                    url: "/manage_auditLog",
+                    templateUrl: "/App/Main/views/manage/auditLog.cshtml",
+                    menu: "Manage_AuditLog",
+	                ncyBreadcrumb: {
+	                    label: App.localize("Manage_AuditLog"),
+	                    description: App.localize("Manage_AuditLogDescription")
+	                },
+	                resolve: {
+	                    deps: [
+							"$ocLazyLoad",
+							function ($ocLazyLoad) {
+							    return $ocLazyLoad.load({
+							        serie: true,
+							        files: [
+										"/App/Main/views/manage/auditLog.js"
+							        ]
+							    });
+							}
+	                    ]
+	                }
+	            })
 	        ;
 
 	        $urlRouterProvider.otherwise(abp.setting.get("Platform.ApplicationConfig.HomePageUrl"));

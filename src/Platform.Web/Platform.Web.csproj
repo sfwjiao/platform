@@ -346,6 +346,7 @@
     <Content Include="App\Main\filter\questionTypeFilter.js" />
     <Content Include="App\Main\filter\removeHtmlFilter.js" />
     <Content Include="App\Main\views\layout\layout.js" />
+    <Content Include="App\Main\views\manage\auditLog.js" />
     <Content Include="App\Main\views\manage\changePwd.js" />
     <Content Include="App\Main\views\manage\fileUpload.js" />
     <Content Include="App\Main\_libconfig.js" />
@@ -1220,6 +1221,7 @@
     <Content Include="fonts\weathericons-regular-webfontd41d.eot" />
     <Content Include="App\Main\configRouter.js" />
     <Content Include="App\Main\views\manage\fileUpload.cshtml" />
+    <Content Include="App\Main\views\manage\auditLog.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <None Include="Scripts\jquery-2.2.0-vsdoc.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />

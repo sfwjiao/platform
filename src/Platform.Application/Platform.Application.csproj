@@ -120,6 +120,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditLog\AuditLogAppService.cs" />
+    <Compile Include="AuditLog\Dto\AuditLogDto.cs" />
+    <Compile Include="AuditLog\Dto\AuditLogInput.cs" />
+    <Compile Include="AuditLog\Dto\AuditLogQueryInput.cs" />
+    <Compile Include="AuditLog\Dto\AuditLogListDto.cs" />
+    <Compile Include="AuditLog\IAuditLogAppService.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
     <Compile Include="PlatformAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
@@ -157,6 +163,7 @@
       <Name>Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
