@@ -1,0 +1,43 @@
+﻿<div class="row" ng-controller="app.views.manage.auditLog.index">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <span class="widget-caption"></span>
+            </div>
+            <div class="widget-body">
+                <div class="btn-group margin-top-10">
+                    <button class="btn" type="button"><i class="fa fa-user"></i> Profile</button>
+                    <button class="btn" type="button"><i class="fa fa-cogs"></i> Settings</button>
+                    <button class="btn" type="button"><i class="fa fa-bullhorn"></i> Feeds</button>
+                </div>
+                <hr>
+                <table class="table table-bordered">
+                    <thead class="flip-content">
+                    <tr>
+                        <th style="width: 5%">序号</th>
+                        <th style="width: 30%">服务名称</th>
+                        <th style="width: 15%">方法名称</th>
+                        <th style="width: 15%">执行时间</th>
+                        <th style="width: 10%">持续时间（毫秒）</th>
+                        <th style="width: 15%">客户端IP</th>
+                        <th style="width: 10%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="auditLog in auditLogs">
+                        <td>{{$index + 1}}</td>
+                        <td>{{auditLog.serviceName}}</td>
+                        <td>{{auditLog.methodName}}</td>
+                        <td>{{auditLog.executionTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{auditLog.executionDuration}}</td>
+                        <td>{{auditLog.clientIpAddress}}</td>
+                        <td><a ng-click="viewDetails(auditLog.id)" class="btn btn-default btn-xs"><i class="fa fa-share"></i> 详情</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>

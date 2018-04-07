@@ -36,32 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.2.0.2\lib\net46\Abp.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.AutoMapper, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.AutoMapper.2.0.2\lib\net46\Abp.AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.EntityFramework, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.EntityFramework.2.0.2\lib\net46\Abp.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.EntityFramework.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.EntityFramework.Common.2.0.2\lib\net46\Abp.EntityFramework.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.TestBase, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.TestBase.2.0.2\lib\net46\Abp.TestBase.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.EntityFramework.2.0.1\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -190,6 +164,38 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{6f829ee3-073c-4671-9ca9-ce1b8365ac5f}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.EntityFramework.Common\Abp.EntityFramework.Common.csproj">
+      <Project>{8147026d-bf9d-4eac-a965-4ef55e30e10b}</Project>
+      <Name>Abp.EntityFramework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.EntityFramework\Abp.EntityFramework.csproj">
+      <Project>{5c00c0b2-5545-46e6-88e4-a12e2c22d1e1}</Project>
+      <Name>Abp.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.TestBase\Abp.TestBase.csproj">
+      <Project>{cce4dc0a-8e61-4a9e-8ef6-3dc8a03162f1}</Project>
+      <Name>Abp.TestBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.Zero.Common\Abp.Zero.Common.csproj">
+      <Project>{be8ae188-f4b6-4862-98bf-acac139b5bb9}</Project>
+      <Name>Abp.Zero.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.Zero.EntityFramework\Abp.Zero.EntityFramework.csproj">
+      <Project>{8a6be497-c47b-4c13-ab43-b2e294788394}</Project>
+      <Name>Abp.Zero.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp.Zero\Abp.Zero.csproj">
+      <Project>{942d1d98-7994-4ae2-a11b-eab0d41b0a5d}</Project>
+      <Name>Abp.Zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Abp\Abp.csproj">
+      <Project>{23daf539-548b-4b2b-b3ea-cf18273911ce}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Platform.Application\Platform.Application.csproj">
       <Project>{EDF5D964-4C0F-4F19-B674-58A38A5E5401}</Project>
       <Name>Platform.Application</Name>

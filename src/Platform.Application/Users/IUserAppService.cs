@@ -14,5 +14,7 @@ namespace Platform.Users
         Task<ListResultDto<UserListDto>> GetUsers();
 
         Task CreateUser(CreateUserInput input);
+
+        Task UpdatePwd(UpdatePwdInput input);
     }
 }

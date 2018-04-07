@@ -32,7 +32,7 @@
 	            })
                 .state("manage_AuditLog", {
                     url: "/manage_auditLog",
-                    templateUrl: "/App/Main/views/manage/auditLog.cshtml",
+                    templateUrl: "/App/Main/views/manage/auditLog/index.cshtml",
                     menu: "Manage_AuditLog",
 	                ncyBreadcrumb: {
 	                    label: App.localize("Manage_AuditLog"),
@@ -45,7 +45,7 @@
 							    return $ocLazyLoad.load({
 							        serie: true,
 							        files: [
-										"/App/Main/views/manage/auditLog.js"
+										"/App/Main/views/manage/auditLog/index.js"
 							        ]
 							    });
 							}

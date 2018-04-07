@@ -21,7 +21,6 @@ namespace Abp.Application.Services
     /// <typeparam name="TListDto"></typeparam>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TQueryInput"></typeparam>
-    [DisableAuditing]
     public class DefaultActionApplicationService<
         TPrimaryKey,
         T,

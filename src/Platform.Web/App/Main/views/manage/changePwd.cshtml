@@ -1,35 +1,35 @@
-﻿<div class="row" ng-controller="app.views.manage.changePwd as vm">
+﻿<div class="row" ng-controller="app.views.manage.changePwd">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header">
                 <span class="widget-caption"></span>
             </div>
             <div class="widget-body">
-                <form name="formAdd" ng-submit="vm.submitForm(formAdd)" class="form-horizontal bv-form margin-top-10" novalidate>
+                <form name="formAdd" class="form-horizontal bv-form margin-top-10" novalidate>
                     <div class="form-group has-feedback" ng-class="{ 'has-error' : formAdd.oldPassword.$invalid && !formAdd.oldPassword.$pristine }">
                         <label class="col-lg-3 control-label">原密码</label>
                         <div class="col-lg-7">
-                            <input type="password" class="form-control" name="oldPassword" ng-model="vm.input.oldPassword" required>
+                            <input type="password" class="form-control" name="oldPassword" ng-model="input.oldPassword" required>
                             <p ng-show="formAdd.oldPassword.$invalid && !formAdd.oldPassword.$pristine" class="help-block">请填写原密码.</p>
                         </div>
                     </div>
                     <div class="form-group has-feedback" ng-class="{ 'has-error' : formAdd.password.$invalid && !formAdd.password.$pristine }">
                         <label class="col-lg-3 control-label">新密码</label>
                         <div class="col-lg-7">
-                            <input type="password" class="form-control" name="password" ng-model="vm.input.password" ng-minlength="6" ng-maxlength="32">
+                            <input type="password" class="form-control" name="password" ng-model="input.password" ng-minlength="6" ng-maxlength="32">
                             <p ng-show="formAdd.password.$invalid && !formAdd.password.$pristine" class="help-block">密码长度为6-32个字符.</p>
                         </div>
                     </div>
                     <div class="form-group has-feedback" ng-class="{ 'has-error' : formAdd.password2.$invalid && !formAdd.password2.$pristine }">
                         <label class="col-lg-3 control-label">确认新密码</label>
                         <div class="col-lg-7">
-                            <input type="password" class="form-control" name="password2" ng-model="vm.input.password2" ng-minlength="6" ng-maxlength="32">
-                            <p ng-show="formAdd.password2.$invalid && !formAdd.password2.$pristine" class="help-block">密码长度为6-32个字符.</p>
+                            <input type="password" class="form-control" pw-check="password" name="password2" ng-model="input.password2" ng-minlength="6" ng-maxlength="32">
+                            <p ng-show="formAdd.password2.$invalid && !formAdd.password2.$pristine" class="help-block">两次输入密码不一致.</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-7 col-lg-offset-3">
-                            <button type="submit" class="btn btn-blue">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                            <button type="submit" class="btn btn-blue" ng-click="submitForm(formAdd)">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
                         </div>
                     </div>
                 </form>
