@@ -44,7 +44,14 @@ namespace Abp.Web.Mvc.Controllers
         {
             if (controllerType == null)
             {
-                return base.GetControllerInstance(requestContext, controllerType);
+                try
+                {
+                    return base.GetControllerInstance(requestContext, controllerType);
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             return _iocManager.Resolve<IController>(controllerType);

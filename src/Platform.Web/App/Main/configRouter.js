@@ -41,13 +41,19 @@
 	                resolve: {
 	                    deps: [
 							"$ocLazyLoad",
-							function ($ocLazyLoad) {
-							    return $ocLazyLoad.load({
-							        serie: true,
-							        files: [
-										"/App/Main/views/manage/auditLog/index.js"
-							        ]
-							    });
+                            function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['daterangepicker']).then(
+                                    function () {
+                                        return $ocLazyLoad.load(
+                                            {
+                                                serie: true,
+                                                files: [
+                                                    "/App/Main/factory/queryFilterFactory.js",
+                                                    "/App/Main/views/manage/auditLog/index.js"
+                                                ]
+                                            });
+                                    }
+                                );
 							}
 	                    ]
 	                }

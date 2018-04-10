@@ -13772,11 +13772,11 @@ tags-input {
 
     .daterangepicker select.monthselect {
         margin-right: 2%;
-        width: 56%;
+        width: 46%;
     }
 
     .daterangepicker select.yearselect {
-        width: 40%;
+        width: 50%;
     }
 
     .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {

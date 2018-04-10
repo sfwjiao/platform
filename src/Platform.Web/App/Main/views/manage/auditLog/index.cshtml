@@ -5,39 +5,49 @@
                 <span class="widget-caption"></span>
             </div>
             <div class="widget-body">
-                <div class="btn-group margin-top-10">
-                    <button class="btn" type="button"><i class="fa fa-user"></i> Profile</button>
-                    <button class="btn" type="button"><i class="fa fa-cogs"></i> Settings</button>
-                    <button class="btn" type="button"><i class="fa fa-bullhorn"></i> Feeds</button>
+                <div class="form-inline margin-top-10">
+                    <label class="control-label">查询条件：</label>
+                    <input date-range-picker class="form-control date-picker" style="width:250px;" type="text" ng-model="filterOptions.date" />
+                    <input class="form-control" type="text" placeholder="服务名称" ng-model="filterOptions.serviceName" />
+                    <input class="form-control" type="text" placeholder="方法名称" ng-model="filterOptions.methodName" />
+                    <button type="button" class="btn btn-default" ng-click="getData()"><i class="fa fa-search"></i>查询</button>
                 </div>
-                <hr>
-                <table class="table table-bordered">
+                <hr />
+                <table class="table table-bordered" ng-show="auditLogs.length > 0">
                     <thead class="flip-content">
-                    <tr>
-                        <th style="width: 5%">序号</th>
-                        <th style="width: 30%">服务名称</th>
-                        <th style="width: 15%">方法名称</th>
-                        <th style="width: 15%">执行时间</th>
-                        <th style="width: 10%">持续时间（毫秒）</th>
-                        <th style="width: 15%">客户端IP</th>
-                        <th style="width: 10%">操作</th>
-                    </tr>
+                        <tr>
+                            <th style="width: 8%">序号</th>
+                            <th style="width: 30%">服务名称</th>
+                            <th style="width: 15%">方法名称</th>
+                            <th style="width: 15%">执行时间</th>
+                            <th style="width: 10%">持续时间（毫秒）</th>
+                            <th style="width: 15%">客户端IP</th>
+                            <th style="width: 7%">操作</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="auditLog in auditLogs">
-                        <td>{{$index + 1}}</td>
-                        <td>{{auditLog.serviceName}}</td>
-                        <td>{{auditLog.methodName}}</td>
-                        <td>{{auditLog.executionTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
-                        <td>{{auditLog.executionDuration}}</td>
-                        <td>{{auditLog.clientIpAddress}}</td>
-                        <td><a ng-click="viewDetails(auditLog.id)" class="btn btn-default btn-xs"><i class="fa fa-share"></i> 详情</a></td>
-                    </tr>
+                        <tr ng-repeat="auditLog in auditLogs">
+                            <td>{{pagination.start() + $index + 1}}</td>
+                            <td>{{auditLog.serviceName}}</td>
+                            <td>{{auditLog.methodName}}</td>
+                            <td>{{auditLog.executionTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{auditLog.executionDuration}}</td>
+                            <td>{{auditLog.clientIpAddress}}</td>
+                            <td><a ng-click="viewDetails(auditLog.id)" class="btn btn-default btn-xs"><i class="fa fa-share"></i> 详情</a></td>
+                        </tr>
                     </tbody>
                 </table>
+                <div class="form-inline  margin-10" ng-show="auditLogs.length > 0">
+                    <label class="control-label">共{{pagination.totalCount}}条数据{{pagination.numPages}}页，当前第{{pagination.pageIndex}}页</label>
+                    <uib-pagination class="pagination-sm pull-right"
+                                    total-items="pagination.totalCount" items_per_page="pagination.pageSize"
+                                    ng-model="pagination.pageIndex" max-size="pagination.pageNumberCount"
+                                    rotate="false" num-pages="pagination.numPages"
+                                    previous-text="上一页" next-text="下一页">
+                    </uib-pagination>
+                </div>
+                <h4 class="text-center" ng-show="auditLogs.length <= 0">没有符合要求的数据！</h4>
             </div>
         </div>
-
-
     </div>
 </div>

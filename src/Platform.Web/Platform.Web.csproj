@@ -275,6 +275,7 @@
     <Content Include="App\Main\app.js" />
     <Content Include="App\Main\configLazyload.js" />
     <Content Include="App\Main\directives\pwCheck.js" />
+    <Content Include="App\Main\factory\queryFilterFactory.js" />
     <Content Include="App\Main\images\abp-logo.png" />
     <Content Include="App\Main\main.css">
       <DependentUpon>main.less</DependentUpon>
@@ -300,7 +301,6 @@
     <Content Include="App\Main\filter\questionTypeFilter.js" />
     <Content Include="App\Main\filter\removeHtmlFilter.js" />
     <Content Include="App\Main\views\layout\layout.js" />
-    <Content Include="App\Main\views\manage\auditLog.js" />
     <Content Include="App\Main\views\manage\auditLog\index.js" />
     <Content Include="App\Main\views\manage\auditLog\modal\viewDetailsModal.js" />
     <Content Include="App\Main\views\manage\changePwd.js" />
@@ -1177,7 +1177,6 @@
     <Content Include="fonts\weathericons-regular-webfontd41d.eot" />
     <Content Include="App\Main\configRouter.js" />
     <Content Include="App\Main\views\manage\fileUpload.cshtml" />
-    <Content Include="App\Main\views\manage\auditLog.cshtml" />
     <Content Include="App\Main\views\manage\auditLog\index.cshtml" />
     <Content Include="App\Main\views\manage\auditLog\modal\viewDetailsModal.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />

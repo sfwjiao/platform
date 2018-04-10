@@ -104,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfigSettingProvider.cs" />
-    <Compile Include="AuditLogInclude.cs" />
     <Compile Include="PlatformConsts.cs" />
     <Compile Include="PlatformCoreModule.cs" />
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />
