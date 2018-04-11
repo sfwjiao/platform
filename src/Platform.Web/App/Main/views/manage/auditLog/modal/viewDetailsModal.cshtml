@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="tab-pane active" id="info-tab">
+                <div class="form-group">
+                    <h5><b>租户名称</b></h5>
+                    <span class="padding-left-10">{{auditLog.tenant.name}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>用户名称</b></h5>
+                    <span class="padding-left-10">{{auditLog.user.name}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>服务名称</b></h5>
+                    <span class="padding-left-10">{{auditLog.serviceName}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>方法名称</b></h5>
+                    <span class="padding-left-10">{{auditLog.methodName}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>执行参数</b></h5>
+                    <span class="padding-left-10">{{auditLog.parameters}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>执行时间</b></h5>
+                    <span class="padding-left-10">{{auditLog.executionTime | date : "yyyy-MM-dd HH:mm:ss"}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>持续时间</b></h5>
+                    <span class="padding-left-10">{{auditLog.executionDuration}}毫秒</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>客户端IP</b></h5>
+                    <span class="padding-left-10">{{auditLog.clientIpAddress}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

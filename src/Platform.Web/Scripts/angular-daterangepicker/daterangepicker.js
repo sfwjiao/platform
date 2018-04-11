@@ -159,6 +159,7 @@
                 fromLabel: 'From',
                 toLabel: 'To',
                 weekLabel: 'W',
+                yearMark: "",
                 customRangeLabel: 'Custom Range',
                 daysOfWeek: moment.weekdaysMin(),
                 monthNames: moment.monthsShort(),
@@ -240,6 +241,10 @@
 
                 if (typeof options.locale.weekLabel === 'string') {
                   this.locale.weekLabel = options.locale.weekLabel;
+                }
+
+                if (typeof options.locale.yearMark === 'string') {
+                    this.locale.yearMark = options.locale.yearMark;
                 }
 
                 if (typeof options.locale.customRangeLabel === 'string') {
@@ -1033,7 +1038,7 @@
             for (var y = minYear; y <= maxYear; y++) {
                 yearHtml += '<option value="' + y + '"' +
                     (y === currentYear ? ' selected="selected"' : '') +
-                    '>' + y + '</option>';
+                    '>' + y + this.locale.yearMark + '</option>';
             }
 
             yearHtml += '</select>';
@@ -1058,7 +1063,7 @@
                 html += '<th></th>';
             }
 
-            var dateHtml = this.locale.monthNames[calendar[1][1].month()] + calendar[1][1].format(" YYYY");
+            var dateHtml = this.locale.monthNames[calendar[1][1].month()] + calendar[1][1].format(" YYYY") + this.locale.yearMark;
 
             if (this.showDropdowns) {
                 dateHtml = this.renderDropdowns(calendar[1][1], minDate, maxDate);

@@ -35,26 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.2.0.2\lib\net46\Abp.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.EntityFramework, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.EntityFramework.2.0.2\lib\net46\Abp.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.EntityFramework.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.EntityFramework.Common.2.0.2\lib\net46\Abp.EntityFramework.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.EntityFramework.2.0.1\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
@@ -136,9 +116,9 @@
   <ItemGroup>
     <Compile Include="EntityFramework\PlatformDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\PlatformRepositoryBase.cs" />
-    <Compile Include="Migrations\201701271145151_AbpZero_Initial.cs" />
-    <Compile Include="Migrations\201701271145151_AbpZero_Initial.Designer.cs">
-      <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201804081404488_AbpZero_Initial.cs" />
+    <Compile Include="Migrations\201804081404488_AbpZero_Initial.Designer.cs">
+      <DependentUpon>201804081404488_AbpZero_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -157,14 +137,38 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Abp.EntityFramework.Common\Abp.EntityFramework.Common.csproj">
+      <Project>{8147026d-bf9d-4eac-a965-4ef55e30e10b}</Project>
+      <Name>Abp.EntityFramework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abp.EntityFramework\Abp.EntityFramework.csproj">
+      <Project>{5c00c0b2-5545-46e6-88e4-a12e2c22d1e1}</Project>
+      <Name>Abp.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abp.Zero.Common\Abp.Zero.Common.csproj">
+      <Project>{be8ae188-f4b6-4862-98bf-acac139b5bb9}</Project>
+      <Name>Abp.Zero.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abp.Zero.EntityFramework\Abp.Zero.EntityFramework.csproj">
+      <Project>{8a6be497-c47b-4c13-ab43-b2e294788394}</Project>
+      <Name>Abp.Zero.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abp.Zero\Abp.Zero.csproj">
+      <Project>{942d1d98-7994-4ae2-a11b-eab0d41b0a5d}</Project>
+      <Name>Abp.Zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abp\Abp.csproj">
+      <Project>{23daf539-548b-4b2b-b3ea-cf18273911ce}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Platform.Core\Platform.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701271145151_AbpZero_Initial.resx">
-      <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804081404488_AbpZero_Initial.resx">
+      <DependentUpon>201804081404488_AbpZero_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

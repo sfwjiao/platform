@@ -30,6 +30,34 @@
 	                    ]
 	                }
 	            })
+                .state("manage_AuditLog", {
+                    url: "/manage_auditLog",
+                    templateUrl: "/App/Main/views/manage/auditLog/index.cshtml",
+                    menu: "Manage_AuditLog",
+	                ncyBreadcrumb: {
+	                    label: App.localize("Manage_AuditLog"),
+	                    description: App.localize("Manage_AuditLogDescription")
+	                },
+	                resolve: {
+	                    deps: [
+							"$ocLazyLoad",
+                            function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['daterangepicker']).then(
+                                    function () {
+                                        return $ocLazyLoad.load(
+                                            {
+                                                serie: true,
+                                                files: [
+                                                    "/App/Main/factory/queryFilterFactory.js",
+                                                    "/App/Main/views/manage/auditLog/index.js"
+                                                ]
+                                            });
+                                    }
+                                );
+							}
+	                    ]
+	                }
+	            })
 	        ;
 
 	        $urlRouterProvider.otherwise(abp.setting.get("Platform.ApplicationConfig.HomePageUrl"));

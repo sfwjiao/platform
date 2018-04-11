@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.Auditing;
 using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
@@ -19,23 +19,23 @@ namespace Abp.Application.Services
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TPrimaryKey"></typeparam>
     /// <typeparam name="TDto"></typeparam>
-    /// <typeparam name="TSimpleDto"></typeparam>
+    /// <typeparam name="TListDto"></typeparam>
     /// <typeparam name="TInput"></typeparam>
     /// <typeparam name="TQueryInput"></typeparam>
     public class DefaultActionApplicationService<
         TPrimaryKey,
         T,
         TDto,
-        TSimpleDto,
+        TListDto,
         TInput,
         TQueryInput
         >
         : ApplicationService
-        , IDefaultActionApplicationService<TPrimaryKey, TDto, TSimpleDto, TInput, TQueryInput>
+        , IDefaultActionApplicationService<TPrimaryKey, TDto, TListDto, TInput, TQueryInput>
         where TPrimaryKey : struct
         where T : Entity<TPrimaryKey>
         where TDto : EntityDto<TPrimaryKey>
-        where TSimpleDto : EntityDto<TPrimaryKey>
+        where TListDto : EntityDto<TPrimaryKey>
         where TInput : NullableIdDto<TPrimaryKey>
         where TQueryInput : QueryInput<TPrimaryKey>
     {
@@ -90,7 +90,7 @@ namespace Abp.Application.Services
         }
 
         [UnitOfWork]
-        public async Task<TSimpleDto> AddAndGetObj(TInput input)
+        public async Task<TDto> AddAndGetObj(TInput input)
         {
             var entity = await OnAddAndGetObjExecuting(input);
 
@@ -98,7 +98,7 @@ namespace Abp.Application.Services
             var id = await EntityRepository.InsertAndGetIdAsync(entity);
             UnitOfWorkManager.Current.SaveChanges();
 
-            return (await EntityRepository.GetAsync(id)).MapTo<TSimpleDto>();
+            return (await EntityRepository.GetAsync(id)).MapTo<TDto>();
         }
 
         /// <summary>
@@ -148,7 +148,9 @@ namespace Abp.Application.Services
 
             entity = await OnGetExecuting(id, entity);
 
-            return entity.MapTo<TDto>();
+            var dto = entity.MapTo<TDto>();
+
+            return await OnGetExecuted(id, dto);
         }
 
         /// <summary>
@@ -161,26 +163,18 @@ namespace Abp.Application.Services
             return await Task.FromResult(entity);
         }
 
-        public virtual async Task<TSimpleDto> GetSimple(TPrimaryKey id)
-        {
-            var entity = await EntityRepository.GetAsync(id);
-
-            entity = await OnGetSimpleExecuting(id, entity);
-
-            return entity.MapTo<TSimpleDto>();
-        }
-
         /// <summary>
-        /// 获取精简数据执行前的附加业务
+        /// 获取数据传送对象后的附加业务
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="entity"></param>
-        protected virtual async Task<T> OnGetSimpleExecuting(TPrimaryKey id, T entity)
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        protected virtual async Task<TDto> OnGetExecuted(TPrimaryKey id, TDto dto)
         {
-            return await Task.FromResult(entity);
+            return await Task.FromResult(dto);
         }
 
-        public async Task<PagedResultDto<TDto>> Query(TQueryInput input)
+        public async Task<PagedResultDto<TListDto>> Query(TQueryInput input)
         {
             //验证参数
             if (!input.PageSize.HasValue) throw new UserFriendlyException("传入PageSize参数不正确！");
@@ -209,7 +203,7 @@ namespace Abp.Application.Services
             var obj = await Task.FromResult(query.ToList());
 
             //包装为分页输出对象
-            return new PagedResultDto<TDto>(totalcount, obj.MapTo<List<TDto>>());
+            return new PagedResultDto<TListDto>(totalcount, obj.MapTo<List<TListDto>>());
         }
 
         /// <summary>
@@ -230,60 +224,6 @@ namespace Abp.Application.Services
         /// <param name="input"></param>
         /// <returns></returns>
         protected virtual IQueryable<T> OnQueryOrderBy(IQueryable<T> query, TQueryInput input)
-        {
-            return query.OrderBy(x => x.Id);
-        }
-
-        public async Task<PagedResultDto<TSimpleDto>> QuerySimple(TQueryInput input)
-        {
-            //验证参数
-            if (!input.PageSize.HasValue) throw new UserFriendlyException("传入PageSize参数不正确！");
-            if (!input.Start.HasValue) throw new UserFriendlyException("传入Start参数不正确！");
-
-            //获取查询对象
-            var query = EntityRepository.GetAll();
-
-            //自定义条件
-            query = OnCustomQuerySimpleWhere(query, input);
-
-            //获取总数
-            var totalcount = await Task.FromResult(query.Count());
-
-            //排序
-            query = OnQuerySimpleOrderBy(query, input);
-
-            //添加分页条件
-            query = query.Skip(input.Start.Value);
-            if (input.PageSize.Value > 0)
-            {
-                query = query.Take(input.PageSize.Value);
-            }
-
-            //执行查询
-            var obj = await Task.FromResult(query.ToList());
-
-            //包装为分页输出对象
-            return new PagedResultDto<TSimpleDto>(totalcount, obj.MapTo<List<TSimpleDto>>());
-        }
-
-        /// <summary>
-        /// 查询数据自定义条件
-        /// </summary>
-        /// <param name="query"></param>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        protected virtual IQueryable<T> OnCustomQuerySimpleWhere(IQueryable<T> query, TQueryInput input)
-        {
-            return query;
-        }
-
-        /// <summary>
-        /// 查询数据排序
-        /// </summary>
-        /// <param name="query"></param>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        protected virtual IQueryable<T> OnQuerySimpleOrderBy(IQueryable<T> query, TQueryInput input)
         {
             return query.OrderBy(x => x.Id);
         }
