@@ -305,6 +305,10 @@
     <Content Include="App\Main\views\manage\auditLog\modal\viewDetailsModal.js" />
     <Content Include="App\Main\views\manage\changePwd.js" />
     <Content Include="App\Main\views\manage\fileUpload.js" />
+    <None Include="App\Main\views\manage\syslog\index.cshtml" />
+    <Content Include="App\Main\views\manage\syslog\index.js" />
+    <None Include="App\Main\views\manage\syslog\modal\viewDetailsModal.cshtml" />
+    <Content Include="App\Main\views\manage\syslog\modal\viewDetailsModal.js" />
     <Content Include="App\Main\_libconfig.js" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\themes\beyond\beyond.min.css" />

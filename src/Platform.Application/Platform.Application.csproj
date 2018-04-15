@@ -113,6 +113,12 @@
     <Compile Include="AuditLog\Dto\AuditLogQueryInput.cs" />
     <Compile Include="AuditLog\Dto\AuditLogListDto.cs" />
     <Compile Include="AuditLog\IAuditLogAppService.cs" />
+    <Compile Include="Syslog\Dto\SyslogDto.cs" />
+    <Compile Include="Syslog\Dto\SyslogInput.cs" />
+    <Compile Include="Syslog\Dto\SyslogListDto.cs" />
+    <Compile Include="Syslog\Dto\SyslogQueryInput.cs" />
+    <Compile Include="Syslog\ISyslogAppService.cs" />
+    <Compile Include="Syslog\SyslogAppService.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
     <Compile Include="PlatformAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />

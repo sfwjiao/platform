@@ -32,6 +32,8 @@
     <text name="Manage_ChangePwdDescription" value="修改您的登录密码" />
     <text name="Manage_AuditLog" value="审计日志" />
     <text name="Manage_AuditLogDescription" value="查看审计日志协助调试程序，统计各各方法的使用频率" />
+    <text name="Manage_Syslog" value="系统日志" />
+    <text name="Manage_SyslogDescription" value="查看、管理系统日志" />
     
   </texts>
 </localizationDictionary>

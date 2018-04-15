@@ -104,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfigSettingProvider.cs" />
+    <Compile Include="Log\Syslog.cs" />
+    <Compile Include="Log\SyslogManager.cs" />
     <Compile Include="PlatformConsts.cs" />
     <Compile Include="PlatformCoreModule.cs" />
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />

@@ -116,9 +116,13 @@
   <ItemGroup>
     <Compile Include="EntityFramework\PlatformDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\PlatformRepositoryBase.cs" />
-    <Compile Include="Migrations\201804081404488_AbpZero_Initial.cs" />
-    <Compile Include="Migrations\201804081404488_AbpZero_Initial.Designer.cs">
-      <DependentUpon>201804081404488_AbpZero_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201804150123479_Sharp2.cs" />
+    <Compile Include="Migrations\201804150123479_Sharp2.Designer.cs">
+      <DependentUpon>201804150123479_Sharp2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AbpZero_Initial.cs" />
+    <Compile Include="Migrations\AbpZero_Initial.Designer.cs">
+      <DependentUpon>AbpZero_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -167,8 +171,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804081404488_AbpZero_Initial.resx">
-      <DependentUpon>201804081404488_AbpZero_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804150123479_Sharp2.resx">
+      <DependentUpon>201804150123479_Sharp2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\AbpZero_Initial.resx">
+      <DependentUpon>AbpZero_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

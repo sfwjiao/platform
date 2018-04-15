@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using Platform.Authorization.Roles;
+using Platform.Log;
 using Platform.MultiTenancy;
 using Platform.Users;
 
@@ -10,7 +11,7 @@ namespace Platform.EntityFramework
     public class PlatformDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
-        //public virtual IDbSet<AuditLogInclude> AuditLogIncludes { get; set; }
+        public virtual IDbSet<Syslog> Syslogs { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

@@ -9,12 +9,18 @@
                 modules: [
                     {
                         name: 'daterangepicker',
-                        serie: true,
                         files: [
                             '/Scripts/angular-daterangepicker/daterangepicker.js',
                             '/Scripts/angular-daterangepicker/angular-daterangepicker.js'
                         ]
-                    }
+                    },
+                    {
+                        name: 'ui.select',
+                        files: [
+                            '/Scripts/angular-ui-select/select.css',
+                            '/Scripts/angular-ui-select/select.js'
+                        ]
+                    },
                 ]
             });
         }
