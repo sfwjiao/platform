@@ -1,0 +1,55 @@
+﻿<div class="row" ng-controller="app.views.manage.syslog.index">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <span class="widget-caption"></span>
+            </div>
+            <div class="widget-body">
+                <div class="form-inline margin-top-10">
+                    <label class="control-label">查询条件：</label>
+                    <input date-range-picker class="form-control date-picker" style="width:250px;" type="text" ng-model="filterOptions.date" />
+                    <ui-select ng-model="filterOptions.level" theme="select2" ng-disabled="disabled" style="width: 200px;">
+                        <ui-select-match placeholder="LOG级别">{{$select.selected.value}}</ui-select-match>
+                        <ui-select-choices repeat="level.key as level in levels | filter: $select.search">
+                            <div ng-bind-html="level.value| highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                    <button type="button" class="btn btn-default" ng-click="getData()"><i class="fa fa-search"></i>查询</button>
+                </div>
+                <hr />
+                <table class="table table-bordered" ng-show="syslogs.length > 0">
+                    <thead class="flip-content">
+                        <tr>
+                            <th style="width: 8%">序号</th>
+                            <th style="width: 15%">LOG级别</th>
+                            <th style="width: 15%">记录时间</th>
+                            <th style="width: 20%">Logger名称</th>
+                            <th style="width: 35%">日志文本</th>
+                            <th style="width: 7%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="syslog in syslogs">
+                            <td>{{pagination.start() + $index + 1}}</td>
+                            <td>{{syslog.level}}</td>
+                            <td>{{syslog.creationTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{syslog.logger}}</td>
+                            <td>{{syslog.message}}</td>
+                            <td><a ng-click="viewDetails(syslog.id)" class="btn btn-default btn-xs"><i class="fa fa-share"></i> 详情</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-inline  margin-10" ng-show="syslogs.length > 0">
+                    <label class="control-label">共{{pagination.totalCount}}条数据{{pagination.numPages}}页，当前第{{pagination.pageIndex}}页</label>
+                    <uib-pagination class="pagination-sm pull-right"
+                                    total-items="pagination.totalCount" items_per_page="pagination.pageSize"
+                                    ng-model="pagination.pageIndex" max-size="pagination.pageNumberCount"
+                                    rotate="false" num-pages="pagination.numPages"
+                                    previous-text="上一页" next-text="下一页">
+                    </uib-pagination>
+                </div>
+                <h4 class="text-center" ng-show="syslogs.length <= 0">没有符合要求的数据！</h4>
+            </div>
+        </div>
+    </div>
+</div>

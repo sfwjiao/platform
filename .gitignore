@@ -22,7 +22,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-Logs/
+[Ll]ogs/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -218,3 +218,4 @@ FakesAssemblies/
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
 
+Logs.txt

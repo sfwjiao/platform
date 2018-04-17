@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
@@ -147,7 +148,9 @@ namespace Abp.Application.Services
 
             entity = await OnGetExecuting(id, entity);
 
-            return entity.MapTo<TDto>();
+            var dto = entity.MapTo<TDto>();
+
+            return await OnGetExecuted(id, dto);
         }
 
         /// <summary>
@@ -158,6 +161,17 @@ namespace Abp.Application.Services
         protected virtual async Task<T> OnGetExecuting(TPrimaryKey id, T entity)
         {
             return await Task.FromResult(entity);
+        }
+
+        /// <summary>
+        /// 获取数据传送对象后的附加业务
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        protected virtual async Task<TDto> OnGetExecuted(TPrimaryKey id, TDto dto)
+        {
+            return await Task.FromResult(dto);
         }
 
         public async Task<PagedResultDto<TListDto>> Query(TQueryInput input)

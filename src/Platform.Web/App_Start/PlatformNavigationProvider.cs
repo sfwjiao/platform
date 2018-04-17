@@ -35,6 +35,13 @@ namespace Platform.Web
                                 url: "#/manage_auditLog",
                                 icon: "fa fa-eye"
                                 )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "Manage_Syslog",
+                                L("Manage_Syslog"),
+                                url: "#/manage_syslog",
+                                icon: "fa fa-eye"
+                                )
                         )
                 )
                 ;
