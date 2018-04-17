@@ -7,6 +7,8 @@ using Abp.Domain.Repositories;
 using Platform.Authorization;
 using Platform.Users.Dto;
 using Microsoft.AspNet.Identity;
+using Abp.UI;
+using Abp.Threading;
 
 namespace Platform.Users
 {
@@ -16,11 +18,14 @@ namespace Platform.Users
     {
         private readonly IRepository<User, long> _userRepository;
         private readonly IPermissionManager _permissionManager;
+        private readonly LogInManager _loginManager;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager,
+            LogInManager loginManager)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
+            _loginManager = loginManager;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -55,6 +60,38 @@ namespace Platform.Users
             user.IsEmailConfirmed = true;
 
             CheckErrors(await UserManager.CreateAsync(user));
+        }
+
+        public async Task UpdatePwd(UpdatePwdInput input)
+        {
+            //检查传入参数
+            if (!AbpSession.TenantId.HasValue) throw new UserFriendlyException("您无权访问该系统！");
+            if (!input.Id.HasValue) throw new UserFriendlyException("传入Id参数不正确！");
+            if (string.IsNullOrEmpty(input.Password)) throw new UserFriendlyException("传入Password参数不正确！");
+            if (string.IsNullOrEmpty(input.OldPassword)) throw new UserFriendlyException("传入OldPassword参数不正确！");
+
+            //获取需要修改的对象
+            var customer = await _userRepository.FirstOrDefaultAsync(x => x.Id == input.Id.Value);
+            if (customer == null) throw new UserFriendlyException("当前记录不存在！");
+
+            //修改密码
+            if (!string.IsNullOrEmpty(input.Password))
+            {
+                var user = AsyncHelper.RunSync(() => UserManager.GetUserByIdAsync(AbpSession.UserId ?? 0));
+                if (user == null) throw new UserFriendlyException("请重新登录！");
+
+                var tenant = await TenantManager.GetByIdAsync(AbpSession.TenantId.Value);
+                var loginResult = await _loginManager.LoginAsync(user.UserName, input.OldPassword, tenant?.TenancyName);
+                if (loginResult.Result != AbpLoginResultType.Success)
+                {
+                    throw new UserFriendlyException("原密码错误！");
+                }
+
+                customer.Password = new PasswordHasher().HashPassword(input.Password);
+            }
+
+            //执行修改数据方法
+            await _userRepository.UpdateAsync(customer);
         }
     }
 }

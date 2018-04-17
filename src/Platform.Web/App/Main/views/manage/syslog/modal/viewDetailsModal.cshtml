@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="tab-pane active" id="info-tab">
+                <div class="form-group">
+                    <h5><b>LOG级别</b></h5>
+                    <span class="padding-left-10">{{syslog.level}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>记录时间</b></h5>
+                    <span class="padding-left-10">{{syslog.creationTime | date : "yyyy-MM-dd HH:mm:ss"}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>Logger名称</b></h5>
+                    <span class="padding-left-10">{{syslog.logger}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>日志文本</b></h5>
+                    <span class="padding-left-10">{{syslog.message}}</span>
+                </div>
+                <div class="form-group">
+                    <h5><b>异常信息</b></h5>
+                    <span class="padding-left-10">{{syslog.exception}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

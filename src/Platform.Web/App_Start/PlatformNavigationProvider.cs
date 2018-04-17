@@ -28,6 +28,20 @@ namespace Platform.Web
                                 url: "#/manage_changePwd",
                                 icon: "fa fa-key"
                                 )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "Manage_AuditLog",
+                                L("Manage_AuditLog"),
+                                url: "#/manage_auditLog",
+                                icon: "fa fa-eye"
+                                )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                "Manage_Syslog",
+                                L("Manage_Syslog"),
+                                url: "#/manage_syslog",
+                                icon: "fa fa-eye"
+                                )
                         )
                 )
                 ;
