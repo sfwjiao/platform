@@ -27,7 +27,7 @@ var CaptchaObj;
                             url: abp.appPath + 'Account/Login',
                             type: 'POST',
                             data: JSON.stringify({
-                                tenancyName: "Default",
+                                tenancyName: form.context["tenancyName"].value,
                                 usernameOrEmailAddress: form.context["loginid"].value,
                                 password: form.context["pwd"].value,
                                 rememberMe: true,

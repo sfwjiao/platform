@@ -77,7 +77,7 @@ namespace Platform.Web.Controllers
 
         #region Login / Logout
 
-        public ActionResult Login(string returnUrl = "")
+        public ActionResult Login(string tenancyName, string returnUrl = "")
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
@@ -88,7 +88,7 @@ namespace Platform.Web.Controllers
                 new LoginFormViewModel
                 {
                     ReturnUrl = returnUrl,
-                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled
+                    TenancyName = tenancyName
                 });
         }
 
@@ -182,8 +182,14 @@ namespace Platform.Web.Controllers
 
         public ActionResult Logout()
         {
+            var tenantId = AbpSession.TenantId ?? 0;
+            var tenancyName = "";
+            if (tenantId != 0)
+            { 
+                tenancyName = AsyncHelper.RunSync(() => _tenantManager.GetByIdAsync(tenantId)).TenancyName;
+            }
             AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", new { tenancyName });
         }
 
         #endregion

@@ -8,11 +8,13 @@ using Platform.Users;
 using Abp.AutoMapper;
 using Platform.MultiTenancy.Dto;
 using Platform.Users.Dto;
-using Abp.Auditing;
 using Abp.Extensions;
+using Platform.Authorization;
+using Abp.Authorization;
 
 namespace Platform.AuditLog
 {
+    [AbpAuthorize(PermissionNames.Platform)]
     public class AuditLogAppService : DefaultActionApplicationService<
         long,
         Abp.Auditing.AuditLog,

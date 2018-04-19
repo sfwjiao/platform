@@ -1,12 +1,15 @@
 ﻿using Abp.Application.Services;
+using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
+using Platform.Authorization;
 using Platform.Log;
 using Platform.Syslog.Dto;
 using System.Linq;
 
 namespace Platform.Syslog
 {
+    [AbpAuthorize(PermissionNames.Platform)]
     public class SyslogAppService : DefaultActionApplicationService<
         long,
         Log.Syslog,

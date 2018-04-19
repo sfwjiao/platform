@@ -13,12 +13,12 @@ namespace Platform.Migrations.SeedData
             _context = context;
         }
 
-        public void Create()
+        public int Create()
         {
-            CreateUserAndRoles();
+            return CreateUserAndRoles();
         }
 
-        private void CreateUserAndRoles()
+        private int CreateUserAndRoles()
         {
             //Default tenant
 
@@ -27,7 +27,10 @@ namespace Platform.Migrations.SeedData
             {
                 _context.Tenants.Add(new Tenant {TenancyName = Tenant.DefaultTenantName, Name = Tenant.DefaultTenantName});
                 _context.SaveChanges();
+                defaultTenant = _context.Tenants.FirstOrDefault(t => t.TenancyName == Tenant.DefaultTenantName);
             }
+
+            return defaultTenant.Id;
         }
     }
 }

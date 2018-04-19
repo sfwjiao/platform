@@ -4,6 +4,6 @@
     {
         public string ReturnUrl { get; set; }
 
-        public bool IsMultiTenancyEnabled { get; set; }
+        public string TenancyName { get; set; }
     }
 }

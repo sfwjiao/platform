@@ -2,12 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Platform.Authorization;
 using Platform.Authorization.Roles;
 using Platform.Roles.Dto;
 
 namespace Platform.Roles
 {
-    /* THIS IS JUST A SAMPLE. */
+    [AbpAuthorize(PermissionNames.Pages_Tenants)]
     public class RoleAppService : PlatformAppServiceBase,IRoleAppService
     {
         private readonly RoleManager _roleManager;

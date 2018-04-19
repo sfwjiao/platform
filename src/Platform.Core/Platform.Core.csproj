@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfigSettingProvider.cs" />
+    <Compile Include="Authorization\PermissionNames.cs" />
     <Compile Include="Log\Syslog.cs" />
     <Compile Include="Log\SyslogManager.cs" />
     <Compile Include="PlatformConsts.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />
     <Compile Include="Authorization\LoginManager.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
-    <Compile Include="Authorization\PermissionNames.cs" />
     <Compile Include="Authorization\Roles\AppRoleConfig.cs" />
     <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
     <Compile Include="Editions\EditionManager.cs" />

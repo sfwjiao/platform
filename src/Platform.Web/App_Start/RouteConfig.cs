@@ -9,12 +9,18 @@ namespace Platform.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            
             //ASP.NET Web API Route Config
             routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "LoginWithTenancyName",
+                url: "account/login/{tenancyName}",
+                defaults: new { controller = "Account", action = "Login", tenancyName = RouteParameter.Optional }
                 );
 
             routes.MapRoute(
