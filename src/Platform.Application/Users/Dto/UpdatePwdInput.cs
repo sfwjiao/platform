@@ -2,8 +2,6 @@
 {
     public class UpdatePwdInput
     {
-        public long? Id { get; set; }
-
         /// <summary>
         /// 密码
         /// </summary>
