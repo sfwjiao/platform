@@ -3,7 +3,7 @@ using System;
 
 namespace Platform.Syslog.Dto
 {
-    public class SyslogQueryInput : QueryInput<long>
+    public class SyslogQueryInput : PagedResultRequestDto
     {
         public string Level { get; set; }
 

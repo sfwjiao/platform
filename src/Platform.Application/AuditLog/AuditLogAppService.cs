@@ -8,18 +8,17 @@ using Platform.Users;
 using Abp.AutoMapper;
 using Platform.MultiTenancy.Dto;
 using Platform.Users.Dto;
-using Abp.Auditing;
 using Abp.Extensions;
 
 namespace Platform.AuditLog
 {
-    public class AuditLogAppService : DefaultActionApplicationService<
+    public class AuditLogAppService : AsyncCrudAppService<Abp.Auditing.AuditLog, AuditLogDto,
         long,
-        Abp.Auditing.AuditLog,
-        AuditLogDto,
-        AuditLogListDto,
+        GetAllInput,
+        AuditLogCreateInput,
         AuditLogInput,
-        AuditLogQueryInput
+        AuditLogInput,
+        AuditLogInput
         >, IAuditLogAppService
     {
 
@@ -32,8 +31,10 @@ namespace Platform.AuditLog
 
         }
 
-        protected override async Task<AuditLogDto> OnGetExecuted(long id, AuditLogDto dto)
+        public override async Task<AuditLogDto> Get(AuditLogInput input)
         {
+            var dto = await base.Get(input);
+
             if (dto.TenantId.HasValue)
                 dto.Tenant = (await TenantManager.GetByIdAsync(dto.TenantId.Value)).MapTo<TenantListDto>();
 
@@ -43,25 +44,25 @@ namespace Platform.AuditLog
             return dto;
         }
 
-        protected override IQueryable<Abp.Auditing.AuditLog> OnCustomQueryWhere(IQueryable<Abp.Auditing.AuditLog> query, AuditLogQueryInput input)
+        protected override IQueryable<Abp.Auditing.AuditLog> CreateFilteredQuery(GetAllInput input)
         {
-            query = base.OnCustomQueryWhere(query, input);
+            var query = base.CreateFilteredQuery(input);
 
             if (!input.MethodName.IsNullOrEmpty())
             {
                 query = query.Where(x => x.MethodName == input.MethodName);
             }
-            if(!input.ServiceName.IsNullOrEmpty())
+            if (!input.ServiceName.IsNullOrEmpty())
             {
                 query = query.Where(x => x.ServiceName.StartsWith(input.ServiceName) || x.ServiceName.EndsWith(input
-                    .ServiceName));
+                                             .ServiceName));
             }
-            if(input.StartDate.HasValue)
+            if (input.StartDate.HasValue)
             {
                 var startDate = input.StartDate.Value.Date;
                 query = query.Where(x => x.ExecutionTime >= startDate);
             }
-            if(input.EndDate.HasValue)
+            if (input.EndDate.HasValue)
             {
                 var endDate = input.EndDate.Value.Date.AddDays(1);
                 query = query.Where(x => x.ExecutionTime <= endDate);
@@ -69,7 +70,7 @@ namespace Platform.AuditLog
             return query;
         }
 
-        protected override IQueryable<Abp.Auditing.AuditLog> OnQueryOrderBy(IQueryable<Abp.Auditing.AuditLog> query, AuditLogQueryInput input)
+        protected override IQueryable<Abp.Auditing.AuditLog> ApplySorting(IQueryable<Abp.Auditing.AuditLog> query, GetAllInput input)
         {
             return query.OrderByDescending(x => x.ExecutionTime).ThenBy(x => x.Id);
         }

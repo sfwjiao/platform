@@ -18,10 +18,10 @@
             };
 
             $scope.getData = function () {
-                syslogService.get(syslogId).success(function (data) {
+                syslogService.get({ id: syslogId }).success(function(data) {
                     console.log(data);
                     $scope.syslog = data;
-                })
+                });
             };
 
             //提交事件

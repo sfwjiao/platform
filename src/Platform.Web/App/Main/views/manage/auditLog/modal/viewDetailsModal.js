@@ -18,10 +18,10 @@
             };
 
             $scope.getData = function () {
-                auditLogService.get(auditLogId).success(function (data) {
+                auditLogService.get({ id: auditLogId }).success(function(data) {
                     console.log(data);
                     $scope.auditLog = data;
-                })
+                });
             };
 
             //提交事件

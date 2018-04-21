@@ -50,15 +50,25 @@ namespace Abp.Application.Services
     }
 
     public interface IAsyncCrudAppService<TEntityDto, TPrimaryKey, in TGetAllInput, in TCreateInput, in TUpdateInput, in TGetInput, in TDeleteInput>
+        : IAsyncCrudAppService<TEntityDto, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>
+        where TEntityDto : IEntityDto<TPrimaryKey>
+        where TUpdateInput : IEntityDto<TPrimaryKey>
+        where TGetInput : IEntityDto<TPrimaryKey>
+        where TDeleteInput : IEntityDto<TPrimaryKey>
+    {
+    }
+
+    public interface IAsyncCrudAppService<TEntityDto, TEntityListDto, TPrimaryKey, in TGetAllInput, in TCreateInput, in TUpdateInput, in TGetInput, in TDeleteInput>
         : IApplicationService
         where TEntityDto : IEntityDto<TPrimaryKey>
+        where TEntityListDto : IEntityDto<TPrimaryKey>
         where TUpdateInput : IEntityDto<TPrimaryKey>
         where TGetInput : IEntityDto<TPrimaryKey>
         where TDeleteInput : IEntityDto<TPrimaryKey>
     {
         Task<TEntityDto> Get(TGetInput input);
 
-        Task<PagedResultDto<TEntityDto>> GetAll(TGetAllInput input);
+        Task<PagedResultDto<TEntityListDto>> GetAll(TGetAllInput input);
 
         Task<TEntityDto> Create(TCreateInput input);
 

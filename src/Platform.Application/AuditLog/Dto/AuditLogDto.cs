@@ -14,6 +14,7 @@ namespace Platform.AuditLog.Dto
         public string ClientName { get; set; }
         public string CustomData { get; set; }
         public string Exception { get; set; }
+        public int? ExecutionDuration { get; set; }
         public DateTime ExecutionTime { get; set; }
         public int? ImpersonatorTenantId { get; set; }
         public long? ImpersonatorUserId { get; set; }
