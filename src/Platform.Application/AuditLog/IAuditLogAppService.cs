@@ -3,11 +3,13 @@ using Platform.AuditLog.Dto;
 
 namespace Platform.AuditLog
 {
-    public interface IAuditLogAppService: IApplicationService, IDefaultActionApplicationService<long,
-        AuditLogDto,
-        AuditLogListDto,
+    public interface IAuditLogAppService : IAsyncCrudAppService<AuditLogDto,
+        long,
+        GetAllInput,
+        AuditLogCreateInput,
         AuditLogInput,
-        AuditLogQueryInput
+        AuditLogInput,
+        AuditLogInput
         >
     {
     }

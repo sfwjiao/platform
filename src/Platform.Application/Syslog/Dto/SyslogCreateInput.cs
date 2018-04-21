@@ -1,19 +1,16 @@
-﻿using Abp.Application.Services.Dto;
+﻿using System;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Abp.Extensions;
-using System;
 
 namespace Platform.Syslog.Dto
 {
     [AutoMap(typeof(Log.Syslog))]
-    public class SyslogListDto : EntityDto<long>
+    public class SyslogCreateInput : NullableIdDto<long>
     {
-        public const int DisplayMessageLength = 50;
-
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTime? CreationTime { get; set; }
 
         /// <summary>
         /// 线程号
@@ -33,13 +30,11 @@ namespace Platform.Syslog.Dto
         /// <summary>
         /// 日志信息
         /// </summary>
-        private string _message;
-        public string Message
-        {
-            get => _message.Length < DisplayMessageLength
-                ? _message
-                : $"{_message.Left(DisplayMessageLength)}...";
-            set => _message = value;
-        }
+        public string Message { get; set; }
+
+        /// <summary>
+        /// 异常信息
+        /// </summary>
+        public string Exception { get; set; }
     }
 }
