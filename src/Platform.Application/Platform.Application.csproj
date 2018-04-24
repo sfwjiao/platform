@@ -110,9 +110,10 @@
     <Compile Include="AuditLog\AuditLogAppService.cs" />
     <Compile Include="AuditLog\Dto\AuditLogDto.cs" />
     <Compile Include="AuditLog\Dto\AuditLogInput.cs" />
-    <Compile Include="AuditLog\Dto\AuditLogQueryInput.cs" />
-    <Compile Include="AuditLog\Dto\AuditLogListDto.cs" />
+    <Compile Include="AuditLog\Dto\AuditLogCreateInput.cs" />
+    <Compile Include="AuditLog\Dto\GetAllInput.cs" />
     <Compile Include="AuditLog\IAuditLogAppService.cs" />
+    <Compile Include="Syslog\Dto\SyslogCreateInput.cs" />
     <Compile Include="Syslog\Dto\SyslogDto.cs" />
     <Compile Include="Syslog\Dto\SyslogInput.cs" />
     <Compile Include="Syslog\Dto\SyslogListDto.cs" />
@@ -148,10 +149,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Abp.Application\Abp.Application.csproj">
-      <Project>{55d6ca9d-86f7-4bd3-99a0-769a048c3948}</Project>
-      <Name>Abp.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Abp.AutoMapper\Abp.AutoMapper.csproj">
       <Project>{6f829ee3-073c-4671-9ca9-ce1b8365ac5f}</Project>
       <Name>Abp.AutoMapper</Name>

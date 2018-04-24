@@ -1,25 +1,21 @@
 ﻿using Abp.Application.Services;
-using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
-using Platform.Authorization;
 using Platform.Log;
 using Platform.Syslog.Dto;
 using System.Linq;
 
 namespace Platform.Syslog
 {
-    [AbpAuthorize(PermissionNames.Platform)]
-    public class SyslogAppService : DefaultActionApplicationService<
-        long,
-        Log.Syslog,
-        SyslogDto,
-        SyslogListDto,
+    public class SyslogAppService : AsyncCrudAppService<Log.Syslog, SyslogDto, SyslogListDto, long,
+        SyslogQueryInput,
+        SyslogCreateInput,
         SyslogInput,
-        SyslogQueryInput
+        SyslogInput,
+        SyslogInput
         >, ISyslogAppService
     {
-        private SyslogManager _syslogManager { get; set; }
+        private readonly SyslogManager _syslogManager;
 
         public SyslogAppService(
             IRepository<Log.Syslog, long> entityRepository,
@@ -29,8 +25,10 @@ namespace Platform.Syslog
             _syslogManager = syslogManager;
         }
 
-        protected override IQueryable<Log.Syslog> OnCustomQueryWhere(IQueryable<Log.Syslog> query, SyslogQueryInput input)
+        protected override IQueryable<Log.Syslog> CreateFilteredQuery(SyslogQueryInput input)
         {
+            var query = base.CreateFilteredQuery(input);
+
             if (!input.Level.IsNullOrEmpty())
             {
                 query = _syslogManager.GetAllByLevel(input.Level);
@@ -48,7 +46,7 @@ namespace Platform.Syslog
             return query;
         }
 
-        protected override IQueryable<Log.Syslog> OnQueryOrderBy(IQueryable<Log.Syslog> query, SyslogQueryInput input)
+        protected override IQueryable<Log.Syslog> ApplySorting(IQueryable<Log.Syslog> query, SyslogQueryInput input)
         {
             return query.OrderByDescending(x => x.CreationTime).ThenBy(x => x.Id);
         }

@@ -5,7 +5,7 @@ using System;
 namespace Platform.Syslog.Dto
 {
     [AutoMap(typeof(Log.Syslog))]
-    public class SyslogInput : NullableIdDto<long>
+    public class SyslogInput : EntityDto<long>
     {
         /// <summary>
         /// 创建时间

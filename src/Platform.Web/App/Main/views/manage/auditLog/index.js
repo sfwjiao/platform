@@ -29,10 +29,9 @@
             //获取表单数据
             $scope.getData = function () {
                 console.log($scope.filterOptions.date);
-                auditLogService.query({
-                    pageSize: $scope.pagination.pageSize,
-                    start: $scope.pagination.start(),
-                    keyWord: "",
+                auditLogService.getAll({
+                    maxResultCount: $scope.pagination.pageSize,
+                    skipCount: $scope.pagination.start(),
                     startDate: $scope.filterOptions.date.startDate,
                     endDate: $scope.filterOptions.date.endDate,
                     serviceName: $scope.filterOptions.serviceName,

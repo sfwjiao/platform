@@ -5,7 +5,7 @@ using Abp.AutoMapper;
 namespace Platform.AuditLog.Dto
 {
     [AutoMap(typeof(Abp.Auditing.AuditLog))]
-    public class AuditLogInput : NullableIdDto<long>
+    public class AuditLogInput : EntityDto<long>
     {
         public virtual string BrowserInfo { get; set; }
         public virtual string ClientIpAddress { get; set; }

@@ -3,11 +3,12 @@ using Platform.Syslog.Dto;
 
 namespace Platform.Syslog
 {
-    public interface ISyslogAppService : IApplicationService, IDefaultActionApplicationService<long,
-        SyslogDto,
-        SyslogListDto,
+    public interface ISyslogAppService : IAsyncCrudAppService<SyslogDto, SyslogListDto, long,
+        SyslogQueryInput,
+        SyslogCreateInput,
         SyslogInput,
-        SyslogQueryInput
+        SyslogInput,
+        SyslogInput
         >
     {
     }

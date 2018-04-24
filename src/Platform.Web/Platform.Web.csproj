@@ -2078,10 +2078,6 @@
     <Folder Include="Plugins\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Abp.Application\Abp.Application.csproj">
-      <Project>{55d6ca9d-86f7-4bd3-99a0-769a048c3948}</Project>
-      <Name>Abp.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Abp.AutoMapper\Abp.AutoMapper.csproj">
       <Project>{6f829ee3-073c-4671-9ca9-ce1b8365ac5f}</Project>
       <Name>Abp.AutoMapper</Name>
