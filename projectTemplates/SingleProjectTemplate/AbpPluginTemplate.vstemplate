@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Abp插件模板</Name>
+    <Description>Abp插件模板</Description>
+    <Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4701"/>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>Web</ProjectSubType>
+    <SortOrder>10</SortOrder>
+    <RequiredFrameworkVersion>4.6</RequiredFrameworkVersion>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Plugin</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <LocationField>Enabled</LocationField>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ClassLibrary.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Localization\Source\$projectname$-zh-CN.xml">Localization-zh-CN.xml</ProjectItem>
+      <ProjectItem ReplaceParameters="true">app.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true">web.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$projectname$Consts.cs">Plugin-Consts.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="EntityFramework\Repositories\$projectname$RepositoryBase.cs">Plugin-RepositoryBase.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="EntityFramework\$projectname$DbContext.cs">Plugin-DbContext.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Migrations\Configuration.cs">Configuration.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Api\BundleConfig.cs">BundleConfig.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Api\NavigationNames.cs">NavigationNames.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Api\$projectname$NavigationProvider.cs">Plugin-NavigationProvider.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Api\$projectname$SettingProvider.cs">Plugin-SettingProvider.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UI\$projectname$.js">Plugin.js</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UI\$projectname$ConfigRouter.js">Plugin-ConfigRouter.js</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UI\views\$projectname$\index.cshtml">index.cshtml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UI\views\$projectname$\index.js">index.js</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$projectname$Module.cs">Plugin-Module.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages>
+      <package id="Antlr" version="3.4.1.9004" skipAssemblyReferences="true" />
+      <package id="AutoMapper" version="6.0.2" skipAssemblyReferences="true" />
+      <package id="Castle.Core" version="3.3.0" skipAssemblyReferences="true" />
+      <package id="Castle.LoggingFacility" version="3.4.0" skipAssemblyReferences="true" />
+      <package id="Castle.Windsor" version="3.4.0" skipAssemblyReferences="true" />
+      <package id="EntityFramework" version="6.1.3" skipAssemblyReferences="true" />
+      <package id="EntityFramework.DynamicFilters" version="2.6.0" skipAssemblyReferences="true" />
+      <package id="JetBrains.Annotations" version="10.4.0" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.Identity.Core" version="2.2.1" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.Mvc" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.Razor" version="3.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.Web.Optimization" version="1.1.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebApi" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebApi.Client" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebApi.Core" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebApi.WebHost" version="5.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.AspNet.WebPages" version="3.2.3" skipAssemblyReferences="true" />
+      <package id="Microsoft.Bcl" version="1.1.10" skipAssemblyReferences="true" />
+      <package id="Microsoft.Bcl.Async" version="1.0.168" skipAssemblyReferences="true" />
+      <package id="Microsoft.Bcl.Build" version="1.0.21" skipAssemblyReferences="true" />
+      <package id="Microsoft.Owin" version="3.0.1" skipAssemblyReferences="true" />
+      <package id="Microsoft.Owin.Security" version="3.0.1" skipAssemblyReferences="true" />
+      <package id="Microsoft.Owin.Security.OAuth" version="3.0.1" skipAssemblyReferences="true" />
+      <package id="Microsoft.Web.Infrastructure" version="1.0.0.0" skipAssemblyReferences="true" />
+      <package id="Newtonsoft.Json" version="10.0.2" skipAssemblyReferences="true" />
+      <package id="Nito.AsyncEx" version="4.0.1" skipAssemblyReferences="true" />
+      <package id="Owin" version="1.0" skipAssemblyReferences="true" />
+      <package id="System.Collections.Immutable" version="1.3.1" skipAssemblyReferences="true" />
+      <package id="System.Linq.Dynamic.Core" version="1.0.6.13" skipAssemblyReferences="true" />
+      <package id="WebGrease" version="1.5.2" skipAssemblyReferences="true" />
+    </packages>
+  </WizardData>
+</VSTemplate>

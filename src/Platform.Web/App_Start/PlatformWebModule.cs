@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -8,10 +9,16 @@ using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Abp.Zero.Configuration;
 using Platform.Api;
+#if SingleProjectTemplate
+using SingleProjectTemplate;
+#endif
 
 namespace Platform.Web
 {
     [DependsOn(
+#if SingleProjectTemplate
+        typeof(SingleProjectTemplateModule),
+#endif
         typeof(PlatformDataModule),
         typeof(PlatformApplicationModule),
         typeof(PlatformWebApiModule),
