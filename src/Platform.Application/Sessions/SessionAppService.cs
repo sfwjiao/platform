@@ -1,10 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Abp.Auditing;
+using Abp.Authorization;
 using Abp.AutoMapper;
+using Platform.Authorization;
 using Platform.Sessions.Dto;
 
 namespace Platform.Sessions
 {
+    [AbpAuthorize(PermissionNames.Pages_Tenants)]
     public class SessionAppService : PlatformAppServiceBase, ISessionAppService
     {
         [DisableAuditing]

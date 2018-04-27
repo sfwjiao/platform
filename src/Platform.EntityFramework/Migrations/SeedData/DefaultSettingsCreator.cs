@@ -20,7 +20,7 @@ namespace Platform.Migrations.SeedData
             //TODO:修改应用程序配置
             //Emailing
             AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "isaac.joy.cn@hotmail.com");
-            AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "维迈网络 焦晓辉");
+            AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "isaac.joy.cn");
 
             //Languages
             AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "zh-CN");

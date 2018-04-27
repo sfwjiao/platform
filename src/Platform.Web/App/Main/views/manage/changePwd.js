@@ -1,10 +1,8 @@
 ﻿(function () {
     var controllerId = "app.views.manage.changePwd";
     angular.module("app").controller(controllerId, [
-        "$scope", "appSession", "abp.services.app.user", function ($scope, appSession, userService) {
-            $scope.input = {
-                id: appSession.user.id
-            }
+        "$scope", "abp.services.app.user", function ($scope, userService) {
+            $scope.input = {}
 
             $scope.submitForm = function (form) {
                 if (form.$valid) {

@@ -39,6 +39,7 @@
 <!-- Body -->
 <body>
     <form id="loginFrom" method="post" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" novalidate="novalidate">
+        <input type="hidden" id="tenancyName" value="@(Model.TenancyName)" />
         <div class="login-container animated fadeInDown">
             <div class="loginbox bg-white">
                 <div class="loginbox-title">登&nbsp;&nbsp;录</div>

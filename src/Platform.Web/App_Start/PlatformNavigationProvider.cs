@@ -26,6 +26,8 @@ namespace Platform.Web
                                 "Manage_ChangePwd",
                                 L("Manage_ChangePwd"),
                                 url: "#/manage_changePwd",
+                                requiresAuthentication: true,
+                                requiredPermissionName: PermissionNames.Pages_Users,
                                 icon: "fa fa-key"
                                 )
                         ).AddItem(
@@ -33,6 +35,8 @@ namespace Platform.Web
                                 "Manage_AuditLog",
                                 L("Manage_AuditLog"),
                                 url: "#/manage_auditLog",
+                                requiresAuthentication: true,
+                                requiredPermissionName: PermissionNames.Platform,
                                 icon: "fa fa-eye"
                                 )
                         ).AddItem(
@@ -40,6 +44,8 @@ namespace Platform.Web
                                 "Manage_Syslog",
                                 L("Manage_Syslog"),
                                 url: "#/manage_syslog",
+                                requiresAuthentication: true,
+                                requiredPermissionName: PermissionNames.Platform,
                                 icon: "fa fa-eye"
                                 )
                         )

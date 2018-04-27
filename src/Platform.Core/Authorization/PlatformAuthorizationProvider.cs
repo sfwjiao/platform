@@ -16,10 +16,12 @@ namespace Platform.Authorization
             }
 
             var users = pages.CreateChildPermission(PermissionNames.Pages_Users, L("Users"));
-
+                        
+            var tenants = pages.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"));
+            
             //Host permissions
-            var tenants = pages.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
-        }
+            var platform = pages.CreateChildPermission(PermissionNames.Platform, L("Platform"), multiTenancySides: MultiTenancySides.Host);
+    }
 
         private static ILocalizableString L(string name)
         {

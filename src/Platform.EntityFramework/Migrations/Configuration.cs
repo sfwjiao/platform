@@ -26,8 +26,8 @@ namespace Platform.Migrations
                 new InitialHostDbBuilder(context).Create();
 
                 //Default tenant seed (in host database).
-                new DefaultTenantCreator(context).Create();
-                new TenantRoleAndUserBuilder(context, 1).Create();
+                var defaultTenantId = new DefaultTenantCreator(context).Create();
+                new TenantRoleAndUserBuilder(context, defaultTenantId).Create();
             }
             else
             {
