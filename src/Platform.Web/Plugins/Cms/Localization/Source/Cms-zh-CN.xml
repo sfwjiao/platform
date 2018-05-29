@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="Cms" value="Cms" />
+    <text name="Cms_Manage" value="Cms_Manage" />
+    <text name="Cms_ManageDescirption" value="Cms_ManageDescirption" />
+  </texts>
+</localizationDictionary>
