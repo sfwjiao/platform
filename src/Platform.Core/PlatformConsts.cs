@@ -25,6 +25,11 @@
             public const string DefaultTenantAdminName = "Platform.ApplicationConfig.DefaultTenantAdmin.Name";
             public const string DefaultTenantAdminLoginId = "Platform.ApplicationConfig.DefaultTenantAdmin.LoginId";
             public const string DefaultTenantAdminPassword = "Platform.ApplicationConfig.DefaultTenantAdmin.Password";
+
+            public const string UploadFilePath = "Platform.ApplicationConfig.UploadFilePath";
+            public const string UploadFileAllowedExtensions = "Platform.ApplicationConfig.UploadFileAllowedExtensions";
+            public const string UploadImagePath = "Platform.ApplicationConfig.UploadImagePath";
+            public const string UploadImageAllowedExtensions = "Platform.ApplicationConfig.UploadImageAllowedExtensions";
         }
     }
 }

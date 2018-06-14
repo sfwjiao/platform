@@ -113,6 +113,30 @@ namespace Platform
                     L("HomePageUrl"),
                     scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User,
                     isVisibleToClients: true),
+                new SettingDefinition(
+                    PlatformConsts.ApplicationConfigSettingNames.UploadFilePath,
+                    "~/Upload",
+                    L("UploadFilePath"),
+                    scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User,
+                    isVisibleToClients: true),
+                new SettingDefinition(
+                    PlatformConsts.ApplicationConfigSettingNames.UploadFileAllowedExtensions,
+                    "doc|docx|xsl|xslt",
+                    L("UploadFileAllowedExtensions"),
+                    scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User,
+                    isVisibleToClients: true),
+                new SettingDefinition(
+                    PlatformConsts.ApplicationConfigSettingNames.UploadImagePath,
+                    "~/UploadImg",
+                    L("UploadImagePath"),
+                    scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User,
+                    isVisibleToClients: true),
+                new SettingDefinition(
+                    PlatformConsts.ApplicationConfigSettingNames.UploadImageAllowedExtensions,
+                    "jpg|png|gif",
+                    L("UploadImageAllowedExtensions"),
+                    scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User,
+                    isVisibleToClients: true),
             };
         }
 
