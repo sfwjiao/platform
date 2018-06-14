@@ -105,6 +105,21 @@
   <ItemGroup>
     <Compile Include="ApplicationConfigSettingProvider.cs" />
     <Compile Include="Authorization\PermissionNames.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="File\DefaultExtensionValidator.cs" />
+    <Compile Include="File\DefaultFileInfoResolver.cs" />
+    <Compile Include="File\DefaultThumbnailFileInfoResolver.cs" />
+    <Compile Include="File\DefaultThumbnailStrategy.cs" />
+    <Compile Include="File\FileStorageBase.cs" />
+    <Compile Include="File\IExtensionValidator.cs" />
+    <Compile Include="File\IFileInfoResolver.cs" />
+    <Compile Include="File\IFileStorage.cs" />
+    <Compile Include="File\IThumbnailFileInfoResolver.cs" />
+    <Compile Include="File\IThumbnailStorage.cs" />
+    <Compile Include="File\IThumbnailStrategy.cs" />
+    <Compile Include="File\LocalFileStorage.cs" />
+    <Compile Include="File\LocalThumbnailStorage.cs" />
+    <Compile Include="File\NotAllowedExtensionException.cs" />
     <Compile Include="Log\Syslog.cs" />
     <Compile Include="Log\SyslogManager.cs" />
     <Compile Include="PlatformConsts.cs" />
